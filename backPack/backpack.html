@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Backpack</title>
+    <style>
+        /* Style général */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+
+        /* Conteneur principal */
+        .backpack-container {
+            position: relative;
+            width: 130vh;
+            height: 70vh;
+            border: 2px solid #000;
+            overflow: hidden;
+            background-color: #c9c9c9;
+        }
+
+        /* Barre supérieure */
+        .header-info {
+            position: absolute;
+            width: 100%;
+            height: 35px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .return {
+            display: flex;
+            align-items: center;
+            font-size: 20px;
+            color: black;
+            margin-left: 10px;
+        }
+
+        .return img {
+            width: 30px;
+            height: 30px;
+            margin-right: 5px;
+        }
+
+        .header-text {
+            position: absolute;
+            color: black;
+            padding: 5px 10px;
+            border-radius: 5px;
+            margin-top: 50px;
+        }
+
+        .text1 {
+            left: 30%;
+        }
+
+        .text2 {
+            right: 15%;
+        }
+
+        /* Conteneur des cartes */
+        .card-gained {
+            position: absolute;
+            left: 5%;
+            width: 50%;
+            height: 80%;
+            bottom: 0;
+            overflow-y: auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            padding: 10px;
+        }
+
+        .card-gained button {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid #ccc;
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-gained img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Conteneur des items */
+        .items-gained {
+            border: 2px solid black;
+            position: absolute;
+            right: 5%;
+            width: 30%;
+            height: 80%;
+            bottom: 0;
+            overflow-y: auto;
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            grid-template-rows: repeat(auto-fill, 80px);
+            gap: 10px;
+            padding: 10px;
+        }
+
+        .item {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid #ccc;
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+            gap: 5px;
+        }
+
+        .item img {
+            width: 30%;
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="backpack-container">
+        <!-- Barre supérieure -->
+        <div class="header-info">
+            <a href="/req_enterGame" class="return" id="back">
+                <img src="backpack/ressources/return.png" alt="">
+                <p>Return</p>
+            </a>
+            <div class="header-text text1">CARDS</div>
+            <div class="header-text text2">ITEMS</div>
+        </div>
+
+        <!-- Liste des cartes gagnées -->
+        <div class="card-gained">
+            {{bouton | safe}}
+        </div>
+
+        <!-- Liste des items gagnés -->
+        <div class="items-gained">
+
+            {{items | safe}}
+
+        </div>
+    </div>
+    </div>
+
+    <script>
+        const cardListe =
+            {{ true_card_list | safe }}
+        ;
+
+        document.querySelectorAll('.card-gained button').forEach(button => {
+            button.addEventListener('click', function () {
+                const id = parseInt(this.id);
+                const card = cardListe.find(c => c.id === id);
+
+                if (card) {
+                    const popup = document.createElement('div');
+                    popup.className = 'popup';
+                    popup.style.cssText = `
+                        position: absolute; top: 0; left: 0; width: 100%;
+                        height: 100%; background: rgba(0, 0, 0, 0.8);
+                        display: flex; justify-content: center; align-items: center;
+                        z-index: 9999;
+                    `;
+                    popup.innerHTML = `
+                        <div style="background: #fff; padding: 20px; border-radius: 10px; margin-right: 20px;">
+                            <h2>${card.name}</h2>
+                            <p>${card.description}</p>
+                        </div>
+                        <div style="width: 200px; height: 300px; background: #f0f0f0;
+                            border-radius: 10px; background-image: url('${card.source}');
+                            background-size: cover; background-position: center;">
+                        </div>
+                    `;
+                    popup.addEventListener('click', () => popup.remove());
+                    document.querySelector('.backpack-container').appendChild(popup);
+                }
+            });
+        });
+    </script>
+    <script>
+        // Fonction pour revenir en arrière
+        document.getElementById("back").onclick = function () {
+            history.back(); // Revenir à la page précédente
+        };
+
+        // Fonction pour aller à la page suivante
+        document.getElementById("forward").onclick = function () {
+            history.forward(); // Aller à la page suivante
+        };
+    </script>
+
+</body>
+
+</html>

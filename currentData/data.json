@@ -1,0 +1,10 @@
+{
+  "id": "1",
+  "chapter": "1",
+  "chapter_end": false,
+  "chapter_begin": false,
+  "character": "boy",
+  "current_mission": "first",
+  "map_state": "first_time",
+  "cuurent_mission_end": false
+}

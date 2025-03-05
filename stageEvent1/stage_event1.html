@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+
+        .game-container {
+            position: relative;
+            width: 130vh;
+            height: 70vh;
+            border: 2px solid rgb(0, 0, 0);
+            overflow: hidden;
+            background-image: url('stageEvent1/ressources/BG_2.jpg');
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+        }
+
+        .menu-container {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            top: 0;
+            left: 0;
+            background-color: #c9c9c9;
+        }
+
+        .menu-container img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 30px;
+            height: auto;
+            object-fit: cover;
+            transition: opacity 0.5s ease;
+        }
+
+        .menu-hover {
+            opacity: 0;
+        }
+
+        .menu-container:hover .menu-hover {
+            opacity: 1;
+        }
+
+        .menu-container:hover .menu-default {
+            opacity: 0;
+        }
+        .PNG{
+            position: absolute;
+            width: 30%;
+            height: 80%;
+            bottom: 0;
+            left: 10%;
+        }
+        .PNG img{
+            width: 100%;
+            height: 100%;
+        }
+        .continue{
+            position: absolute;
+            right: 0;
+            top: 50%;
+            visibility: hidden;
+            width: 200px;
+            height: 50px;
+        }
+        .continue a{
+            width: 100%;
+            height: 100%;
+        }
+        .continue img{
+            width: 100%;
+            height: 100%;
+        }
+        .missionExplanation{
+            font-size: 25px;
+            background-color: #c9c9c9a9;
+            border-radius: 10px;
+            border: 2px solid black;
+            position: absolute;
+            bottom: 0;
+            width: 90%;
+            height: 40%;
+        }
+
+        
+    </style>
+</head>
+
+<body>
+
+    <div class=" game-container">
+        <div class="menu-container">
+            <a href="/req_menu">
+                <img src="stageEvent1/ressources/icone_menu2.png" alt="Image 1" class="menu">
+                <img src="stageEvent1/ressources/icone_menu1.png" alt="Image 2" class="menu-hover">
+              </a>
+        </div>
+
+        <div class="continue">
+            <a href="/req_stage_event2">
+                <img src="stageEvent1/ressources/continuef.png" alt="">
+            </a>
+    
+        </div>
+        <div class="PNG">
+            <img src="stageEvent1/ressources/boy.png" alt="">
+        </div>
+        <div class="missionExplanation">
+            <p>
+                Après avoir analysé le dossier du client, j'ai remarqué qu'il y avait beaucoup de différences entre ce qu'il a dit et ce qui a été révélé sur la scène de crime. Je crois qu'il serait judicieux d'aller faire un tour dans sa cuisine.            </p>
+        </div>
+    </div>
+
+    <script>
+        // On attend que tout le contenu de la page soit chargé
+        window.onload = function () {
+            // Sélectionner l'élément "continue"
+            const continueDiv = document.querySelector('.continue');
+    
+            // Après 10 secondes, rendre l'élément visible
+            setTimeout(() => {
+                continueDiv.style.visibility = 'visible';
+            }, 5000); // 10 000 ms = 10 secondes
+        };
+    </script>
+    
+
+</body>
+
+</html>

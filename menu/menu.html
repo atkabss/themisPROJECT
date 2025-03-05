@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+
+        .menu-container {
+            width: 130vh;
+            height: 70vh;
+            border: 2px solid rgb(0, 0, 0);
+            background-color: #c9c9c9;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            /* Espacement uniforme entre les éléments */
+            align-items: center;
+        }
+
+        .rect {
+            width: 100%;
+        }
+
+        .rectExtremite {
+            height: 30%;
+            background-color: gray;
+        }
+
+        .rectMilieu {
+            background-color: white;
+            height: 40%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .rectMilieu h3 {
+            margin: 0;
+        }
+
+        .menu-option {
+            width: 50%;
+            height: 80%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border: 2px dashed gray;
+            gap: 10px;
+            /* Ajout de l'espacement entre les liens */
+        }
+
+        .menu-option a {
+            text-decoration: none;
+            color: black;
+            font-size: 18px;
+        }
+
+        .menu-option a:hover {
+            color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="menu-container">
+        <div class="rect rectExtremite"></div>
+        <div class="rect rectMilieu">
+            <h3>MENU</h3>
+            <div class="menu-option">
+                <a href="{{continue}}" >Continue</a>
+                <a href="/req_galery">Gallery</a>
+                <a href="/req_settings">Settings</a>
+                <a href="/req_warning">Return to main menu</a>
+            </div>
+        </div>
+        <div class="rect rectExtremite"></div>
+    </div>
+
+
+</body>
+
+</html>

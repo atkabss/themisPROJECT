@@ -1,0 +1,72 @@
+[
+    {
+        "Nom" : "Mafia_Minior",
+        "HP" : "50 + Level * 22",
+        "Force" : "5 + Level * 2",
+        "Level" : 1,
+        "Logic" : 14132
+    },
+    {
+        "Nom" : "Mafia_Elite",
+        "HP" : "80 + Level * 32",
+        "Force" : "7 + Level * 3",
+        "Level" : 1,
+        "Logic" : 43114
+    },
+    {
+        "Nom" : "Mafia_Leader",
+        "HP" : "100 + Level * 40",
+        "Force" : "10 + Level * 4",
+        "Level" : 1,
+        "Logic" : 43114
+    },
+    {
+        "Nom" : "Mafia_Leader_1",
+        "HP" : "200 + Level * 60",
+        "Force" : "10 + Level * 4",
+        "Level" : 1,
+        "Logic" : 43114
+    },
+    {
+        "Nom" : "Bodyguard",
+        "HP" : "60 + Level * 35",
+        "Force" : "5 + Level * 2.5",
+        "Level" : 1,
+        "Logic" : 43114
+    },
+    {
+        "Nom" : "Robotic_guard",
+        "HP" : "150 + Level * 20",
+        "Force" : "100 + Level * 1",
+        "Level" : 1,
+        "Logic" : 43114
+    },
+    {
+        "Nom" : "Judge",
+        "HP" : "1",
+        "Force" : "0",
+        "Level" : 1,
+        "Logic" : 43114
+    },
+    {
+        "Nom" : "Judge_1",
+        "HP" : "3000",
+        "Force" : "0",
+        "Level" : 1,
+        "Logic" : 43114
+    },
+    {
+        "Nom" : "Unknow_a",
+        "HP" : "70 + Level * 35",
+        "Force" : "7 + Level * 3",
+        "Level" : 1,
+        "Logic" : 43114
+    },
+    {
+        "Nom" : "Unknow_b",
+        "HP" : "80 + Level * 40",
+        "Force" : "7 + Level * 3",
+        "Level" : 1,
+        "Logic" : 43114
+    }
+]

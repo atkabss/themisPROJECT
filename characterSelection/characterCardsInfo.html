@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Info Personnage Cards</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1d273a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .page-container {
+            position: relative;
+            background-image: url("characterSelection/ressources/1fond.png");
+            background-size: cover;
+            width: 130vh;
+            height: 70vh;
+            border: 2px solid #000;
+            overflow: hidden;
+        }
+
+        .menu-container {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            top: 0;
+            left: 0;
+        }
+
+        .menu-container img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 30px;
+            height: auto;
+            object-fit: cover;
+            transition: opacity 0.5s ease;
+        }
+
+        .menu-hover {
+            opacity: 0;
+        }
+
+        .menu-container:hover .menu-hover {
+            opacity: 1;
+        }
+
+        .menu-container:hover .menu-default {
+            opacity: 0;
+        }
+
+        .deco {
+            position: absolute;
+            left: 48%;
+            width: 100px;
+            height: 100px;
+            transform: translate(-50%, 0);
+        }
+
+        .deco img {
+            width: 100%;
+            height: 100%;
+        }
+
+        /*
+la cest pour laffichage de la file 
+*/
+        .fille {
+            position: absolute;
+            right: 0;
+            background-color: #926150;
+            width: 50%;
+            height: 100%;
+        }
+
+        .fille img {
+            background-color: transparent;
+            width: 100%;
+            height: 100%;
+        }
+
+        /*
+pour laffichage du garon on recopie juste les parametre de la fille en chqngeant le cote du quelle il saffiche 
+*/
+
+
+        .garcon {
+            position: absolute;
+            left: 0;
+            background-color: #4d5584;
+            width: 50%;
+            height: 100%;
+        }
+
+        .garcon img {
+            background-color: transparent;
+            width: 100%;
+            height: 100%;
+        }
+
+
+
+        a {
+            width: 100%;
+            height: 100%;
+        }
+
+        .card-list {
+            position: absolute;
+            background-color: transparent;
+            width: 100%;
+            top: 15%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+        .card-list {
+            overflow-y: auto;
+            height: 70%;
+            scrollbar-width: none;
+        }
+
+        .card-list::-webkit-scrollbar {
+            display: none;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 100px);
+            grid-auto-rows: 100px;
+            gap: 10px;
+            height: 90%;
+        }
+
+        .card-grid img {
+            width: 90%;
+            height: 100%;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-grid button {
+            background-color: transparent;
+        }
+
+        .header-info {
+            background-color: transparent;
+            position: absolute;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            width: 100%;
+            height: 15%;
+        }
+
+        .header-info p {
+            margin: 0;
+        }
+
+        .header-info hr {
+            border: 1px solid #fff;
+            width: 70%;
+        }
+
+        .header-info img {
+            width: 50%;
+        }
+
+        .choice {
+            background-color: transparent;
+            position: absolute;
+            bottom: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: row;
+            gap: 80px;
+            width: 100%;
+            height: 15%;
+        }
+
+        .info {
+            {{ place | safe }}
+            position: absolute;
+            width: 50%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            background-color: rgba(77, 77, 77, 0.646);
+        }
+
+        .yes,
+        .no {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 50px;
+            height: 50px;
+        }
+
+        .yes img,
+        .no img {
+            width: 50%;
+            height: 50%;
+        }
+
+        .yes p,
+        .no p {
+            margin: 0;
+        }
+
+        .choice a {
+            color: black;
+            text-decoration: none;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page-container">
+        <div class="fille">
+            <img src="characterSelection/ressources/girl.png" alt="Fille">
+        </div>
+
+        <div class="garcon">
+            <img src="characterSelection/ressources/boy.png" alt="garcon">
+        </div>
+
+        <div class="info">
+            <div class="header-info">
+                <p>Catherine</p>
+                <hr>
+                <img src="characterSelection/ressources/currentPV.png" alt="Current PV">
+                <p id="pv">50/50</p>
+            </div>
+            <div class="choice">
+                <div class="yes">
+                    <a href="/req_roguelike_map">
+                        <img src="characterSelection/ressources/yes.png" alt="Yes">
+                        <p>Yes</p>
+                    </a>
+                </div>
+                <div class="no">
+                    <a href="/req_character_selection">
+                        <img src="characterSelection/ressources/no.png" alt="No">
+                        <p>No</p>
+                    </a>
+                </div>
+            </div>
+            <div class="card-list">
+                <div class="card-grid">
+
+                    {{bouton | safe}}
+
+                </div>
+            </div>
+        </div>
+        <div class="menu-container">
+            <img src="characterSelection/ressources/icone_menu2.png" alt="Menu Default" class="menu">
+            <img src="characterSelection/ressources/icone_menu1.png" alt="Menu Hover" class="menu-hover">
+        </div>
+        <div class="deco">
+            <img src="characterSelection/ressources/WhiteHands.png" alt="">
+
+        </div> <!-- Ceci est un commentaire -->
+    </div>
+    <script>
+        const cardListe = {{ true_card_list | safe }};
+
+        // Ajout d'une fonction pour gérer les clics sur les boutons
+        document.querySelectorAll('.card-grid button').forEach(button => {
+            button.addEventListener('click', function () {
+                // Récupérer l'ID du bouton cliqué
+                const id = parseInt(this.id);
+
+                // Trouver la carte correspondante dans le tableau
+                const card = cardListe.find(c => c.id === id);
+
+                // Vérifier si une carte correspondante a été trouvée
+                if (card) {
+                    // Créer une div pour la pop-up
+                    const popup = document.createElement('div');
+                    popup.classList.add('popup');
+                    popup.style.position = 'absolute';
+                    popup.style.top = '0';
+                    popup.style.left = '0';
+                    popup.style.width = '100%';
+                    popup.style.height = '100%';
+                    popup.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
+                    popup.style.zIndex = '9999';
+                    popup.style.display = 'flex';
+                    popup.style.flexDirection = 'row';
+                    popup.style.justifyContent = 'center';
+                    popup.style.alignItems = 'center';
+
+                    // Ajouter une div pour la description de la carte
+                    const cardDescription = document.createElement('div');
+                    cardDescription.style.backgroundColor = '#fff';
+                    cardDescription.style.color = '#000';
+                    cardDescription.style.padding = '20px';
+                    cardDescription.style.marginRight = '20px';
+                    cardDescription.style.borderRadius = '10px';
+                    cardDescription.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.2)';
+                    cardDescription.innerHTML = `
+                <h2>${card.name}</h2>
+                <p>${card.description}</p>
+            `;
+
+                    // Ajouter une div pour afficher l'image de la carte
+                    const cardImage = document.createElement('div');
+                    cardImage.style.width = '200px';
+                    cardImage.style.height = '300px';
+                    cardImage.style.backgroundColor = '#f0f0f0';
+                    cardImage.style.borderRadius = '10px';
+                    cardImage.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.2)';
+                    cardImage.style.backgroundImage = `url(${card.source})`;
+                    cardImage.style.backgroundSize = 'cover';
+                    cardImage.style.backgroundPosition = 'center';
+
+                    // Ajouter un événement pour fermer la pop-up au clic
+                    popup.addEventListener('click', function () {
+                        popup.remove();
+                    });
+
+                    // Ajouter les deux divs à la pop-up
+                    popup.appendChild(cardDescription);
+                    popup.appendChild(cardImage);
+
+                    // Ajouter la pop-up au conteneur principal
+                    document.querySelector('.page-container').appendChild(popup);
+                }
+            });
+        });
+
+
+
+    </script>
+
+</body>
+
+</html>

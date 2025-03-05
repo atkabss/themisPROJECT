@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+
+        .menu-container {
+            width: 130vh;
+            height: 70vh;
+            border: 2px solid rgb(0, 0, 0);
+            background-color: #c9c9c9;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            /* Espacement uniforme entre les éléments */
+            align-items: center;
+        }
+
+        .rect {
+            width: 100%;
+        }
+
+        .rectExtremite {
+            height: 30%;
+            background-color: #9c9c9c;
+        }
+
+        .rectMilieu {
+            background-color: white;
+            height: 40%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .rectMilieu h3 {
+            margin: 0;
+        }
+
+        .yes {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            bottom: 31.5%;
+            left: 30%;
+
+        }
+
+        .yes p {
+            position: absolute;
+            top: 60%;
+            left: 50%;
+        }
+
+        .yes img {
+            width: 100%;
+        }
+
+        .no p {
+            position: absolute;
+            top: 60%;
+            left: 50%;
+        }
+
+        .no {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            bottom: 32%;
+            right: 30%;
+        }
+
+        .no img {
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="menu-container">
+        <div class="rect rectExtremite"></div>
+        <div class="rect rectMilieu">
+            <h3>MENU</h3>
+            <p>Save and go back to the main menu </p>
+        </div>
+
+        <div class="rect rectExtremite"></div>
+        <a href="/req_enterGame">
+            <div class="yes">
+                <img src="/menu/ressources/yes.png" alt="">
+                <p>Yes</p>
+            </div>
+        </a>
+        <a href="" id="back">
+            <div class="no">
+                <img src="/menu/ressources/no.png" alt="">
+                <p>No</p>
+            </div>
+        </a>
+    </div>
+    <script>
+        // Fonction pour revenir en arrière
+        document.getElementById("back").onclick = function () {
+            history.back(); // Revenir à la page précédente
+        };
+
+        // Fonction pour aller à la page suivante
+        document.getElementById("forward").onclick = function () {
+            history.forward(); // Aller à la page suivante
+        };
+    </script>
+
+</body>
+
+</html>

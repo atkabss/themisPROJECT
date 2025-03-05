@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cercle en 8 parties avec liens</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+
+        .game-container {
+            position: relative;
+            width: 130vh;
+            height: 70vh;
+            border: 2px solid rgb(0, 0, 0);
+            overflow: hidden;
+            background-color: #c9c9c9;
+            display: flex;
+            justify-content: center;
+        }
+
+        .menu-container {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            top: 0;
+            left: 0;
+            background-color: #c9c9c9;
+        }
+
+        .menu-container img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 30px;
+            height: auto;
+            object-fit: cover;
+            transition: opacity 0.5s ease;
+        }
+
+        .menu-hover {
+            opacity: 0;
+        }
+
+        .menu-container:hover .menu-hover {
+            opacity: 1;
+        }
+
+        .menu-container:hover .menu-default {
+            opacity: 0;
+        }
+
+        .chances {
+            position: absolute;
+            left: 1vh;
+            top: 10vh;
+        }
+
+        .chances img {
+            width: 200px;
+        }
+
+        .chances p {
+
+            position: absolute;
+            top: 50%;
+            left: 30%;
+            font-size: 15px;
+            color: white;
+            width: 100px;
+            height: 35px;
+            background-color: rgba(32, 30, 30, 0.521);
+            border-radius: 2px;
+
+        }
+
+        .circle {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            top: 15vh;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+
+        .slice {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+
+            background: transparent;
+            clip-path: polygon(50% 50%, 100% 50%, 100% 0);
+            transform-origin: 50% 50%;
+            display: block;
+            /* Important pour que les liens soient cliquables */
+            text-decoration: none;
+        }
+        {{style_Css | safe }}
+        /* .slice1 {
+            background-color: #e74c3c;
+            transform: rotate(0deg);
+        }
+
+        .slice2 {
+            background-color: #f39c12;
+            transform: rotate(45deg);
+        }
+
+        .slice3 {
+            background-color: #f1c40f;
+            transform: rotate(90deg);
+        }
+
+        .slice4 {
+            background-color: #2ecc71;
+            transform: rotate(135deg);
+        }
+
+        .slice5 {
+            background-color: #1abc9c;
+            transform: rotate(180deg);
+        }
+
+        .slice6 {
+            background-color: #3498db;
+            transform: rotate(225deg);
+        }
+
+        .slice7 {
+            background-color: #9b59b6;
+            transform: rotate(270deg);
+        }
+
+        .slice8 {
+            background-color: #34495e;
+            transform: rotate(315deg);
+        } */
+
+        /* Ajoutez un effet au survol si nécessaire */
+        .slice:hover {
+            filter: brightness(1.2);
+        }
+
+        .indices {
+            color: white;
+            background-color: rgb(74, 65, 65);
+            position: absolute;
+            width: 100%;
+            height: 100px;
+            bottom: 0;
+            border-radius: 10px;
+            font-size: 20px;
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="game-container">
+
+        <a href="/req_menu">
+            <div class="menu-container">
+                <img src="chapitre1/ressources/icone_menu2.png" alt="Image 1" class="menu">
+                <img src="chapitre1/ressources/icone_menu1.png" alt="Image 2" class="menu-hover">
+            </div>
+        </a>
+        <div class="chances">
+            <img src="chapitre1/ressources/boy.png" alt="">
+            <p>you have 4 chances left</p>
+        </div>
+        <div class="circle">
+            {{division | safe }}
+        </div>
+        <div class="indices">
+            <p></p>
+        </div>
+    </div>
+
+    <script>
+        // Sélectionnez toutes les slices
+        const slices = document.querySelectorAll('.slice');
+        // Sélectionnez le paragraphe dans la div "indices"
+        const indiceParagraph = document.querySelector('.indices p');
+    
+        // Ajoutez un écouteur d'événement "mouseover" à chaque slice
+        slices.forEach(slice => {
+            slice.addEventListener('mouseover', () => {
+                // Récupérez le contenu de l'attribut data-texte
+                const texte = slice.getAttribute('data-texte');
+                // Affichez ce texte dans le paragraphe
+                indiceParagraph.textContent = texte;
+            });
+    
+            // Facultatif : Ajoutez un événement "mouseout" pour effacer le texte lorsqu'on quitte la slice
+            slice.addEventListener('mouseout', () => {
+                indiceParagraph.textContent = '';
+            });
+        });
+    
+        // Sélectionnez toutes les divs avec la classe "false"
+        const falseDivs = document.querySelectorAll(".false");
+        // Sélectionnez le paragraphe contenant le texte des chances
+        const chancesParagraph = document.querySelector(".chances p");
+    
+        // Initialisez les chances en extrayant le nombre depuis le texte du paragraphe
+        let chances = parseInt(chancesParagraph.textContent.match(/\d+/)[0]);
+    
+        // Parcourez chaque div et ajoutez un événement "click"
+        falseDivs.forEach(falseDiv => {
+            falseDiv.addEventListener("click", () => {
+                // Si les chances sont supérieures à 0, décrémentez et mettez à jour le texte
+                if (chances > 0) {
+                    chances--;
+                    chancesParagraph.textContent = `you have ${chances} chances left`;
+    
+                    // Si les chances atteignent 2, rendre l'élément 'deuxieme' visible
+                    if (chances === 2) {
+                        document.getElementById("deuxieme").style.visibility = "visible";
+                    }
+    
+                    // Optionnel : Ajoutez une action lorsque les chances atteignent 0
+                    if (chances === 0) {
+                        alert("You have no more chances left!");
+                        window.location.href = "/req_ending"; // Remplace avec ton lien de redirection
+                    }
+                }
+            });
+        });
+    </script>
+    
+
+
+</body>
+
+</html>

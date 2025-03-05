@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cercle en 8 parties avec liens</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+
+        .game-container {
+            position: relative;
+            width: 130vh;
+            height: 70vh;
+            border: 2px solid rgb(0, 0, 0);
+            overflow: hidden;
+            background-color: #c9c9c9;
+            display: flex;
+            justify-content: center;
+        }
+
+        .menu-container {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            top: 0;
+            left: 0;
+            background-color: #c9c9c9;
+        }
+
+        .menu-container img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 30px;
+            height: auto;
+            object-fit: cover;
+            transition: opacity 0.5s ease;
+        }
+
+        .menu-hover {
+            opacity: 0;
+        }
+
+        .menu-container:hover .menu-hover {
+            opacity: 1;
+        }
+
+        .menu-container:hover .menu-default {
+            opacity: 0;
+        }
+        .chances{
+            position: absolute;
+            left: 1vh;
+            top: 10vh;
+        }
+        .chances img {
+            width: 200px;
+        }
+
+        .chances p {
+            
+                position: absolute;
+                top: 50%;
+                left: 30%;
+                font-size: 15px;
+                color: white;
+                width: 100px;
+                height: 35px;
+                background-color: rgba(32, 30, 30, 0.521);
+                border-radius: 2px;
+            
+        }
+
+        .circle {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            top: 15vh;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+
+        .slice {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+
+            background: transparent;
+            clip-path: polygon(50% 50%, 100% 50%, 100% 0);
+            transform-origin: 50% 50%;
+            display: block;
+            /* Important pour que les liens soient cliquables */
+            text-decoration: none;
+        }
+
+        .slice1 {
+            background-color: #e74c3c;
+            transform: rotate(0deg);
+        }
+
+        .slice2 {
+            background-color: #f39c12;
+            transform: rotate(45deg);
+        }
+
+        .slice3 {
+            background-color: #f1c40f;
+            transform: rotate(90deg);
+        }
+
+        .slice4 {
+            background-color: #2ecc71;
+            transform: rotate(135deg);
+        }
+
+        .slice5 {
+            background-color: #1abc9c;
+            transform: rotate(180deg);
+        }
+
+        .slice6 {
+            background-color: #3498db;
+            transform: rotate(225deg);
+        }
+
+        .slice7 {
+            background-color: #9b59b6;
+            transform: rotate(270deg);
+        }
+
+        .slice8 {
+            background-color: #34495e;
+            transform: rotate(315deg);
+        }
+
+        /* Ajoutez un effet au survol si nécessaire */
+        .slice:hover {
+            filter: brightness(1.2);
+        }
+        .indices{
+            color: white;
+            background-color: rgb(74, 65, 65);
+            position: absolute;
+            width: 250px;
+            height: 100px;
+            right: 0;
+            border-radius: 10px;
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="game-container">
+        
+        <a href="/req_menu">
+            <div class="menu-container">
+                <img src="stageEvent2/ressources/icone_menu2.png" alt="Image 1" class="menu">
+                <img src="stageEvent2/ressources/icone_menu1.png" alt="Image 2" class="menu-hover">
+            </div>
+        </a>
+        <div class="chances">
+            <img src="stageEvent2/ressources/fille.png" alt="">
+            <p>you have 2 chances left</p>
+        </div>
+        <div class="circle">
+            <a href="/req_stage_event21?link=0" class="slice slice1" data-texte=" vous avez fait une recherche dans sa chambre  et vous avez trouver des documents  "></a>
+            <a href="/req_stage_event21?link=1" class="slice slice2" data-texte=" vous avez fait une recherche dans sa cuisine et vous avez trouver larme du crime  "></a>
+            <a href="/req_stage_event21?link=2" class="slice slice3" data-texte=" vous avez fait une recherche dans sa voiture et vous avez trouver une cle "></a>
+            <a href="/req_stage_event21?link=3" class="slice slice4" data-texte=" vous avez fait une recherche dans son bureau et vous avez trouver des documents de dingue "></a>
+            <a href="/req_stage_event21?link=4" class="slice slice5" data-texte=" vous avez fait une recherche aupres de ses amis   et vous avez decouvert un secret  "></a>
+            <a href="/req_stage_event21?link=5" class="slice slice6" data-texte=" vous avez fait une recherche dans dans sa salle de bain  et vous avez trouver un corps "></a>
+            <a href="/req_stage_event21?link=6" class="slice slice7" data-texte=" vous avez fait une recherche dans le jardin et vous avez trouver une hache  "></a>
+            <a href="/req_stage_event21?link=7" class="slice slice8" data-texte=" vous avez fait une recherche sur le balcon et vous avez trouver un indice  "></a>
+        </div>
+        <div class="indices">
+            <p></p>
+        </div>
+    </div>
+
+        <script>
+    // Sélectionnez toutes les slices
+    const slices = document.querySelectorAll('.slice');
+    // Sélectionnez le paragraphe dans la div "indices"
+    const indiceParagraph = document.querySelector('.indices p');
+
+    // Ajoutez un écouteur d'événement "mouseover" à chaque slice
+    slices.forEach(slice => {
+        slice.addEventListener('mouseover', () => {
+            // Récupérez le contenu de l'attribut data-texte
+            const texte = slice.getAttribute('data-texte');
+            // Affichez ce texte dans le paragraphe
+            indiceParagraph.textContent = texte;
+        });
+
+        // Facultatif : Ajoutez un événement "mouseout" pour effacer le texte lorsqu'on quitte la slice
+        slice.addEventListener('mouseout', () => {
+            indiceParagraph.textContent = '';
+        });
+    });
+</script>
+
+
+</body>
+
+</html>

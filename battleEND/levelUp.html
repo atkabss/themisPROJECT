@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>levelUp</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+
+        .main-container {
+            position: relative;
+            width: 130vh;
+            height: 70vh;
+            border: 2px solid rgb(0, 0, 0);
+            overflow: hidden;
+            background-color: #c9c9c9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .EXP {
+            display: flex;
+            background-color: #585662;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+        }
+
+        .newItems {
+            width: 500px;
+            height: 200px;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            gap: 70px;
+
+        }
+
+        .items {
+            background-color: #585662;
+            height: 100%;
+            width: 20%;
+        }
+
+        .items img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .new-deals {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            height: 15%;
+            gap: 10px;
+
+        }
+
+        .new-deals img {
+            width: 20%;
+            height: 50%;
+        }
+
+        .deals {
+            background-color: gray;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            padding: 5px;
+            justify-content: center;
+            border-radius: 10px;
+        }
+
+        a {
+            width: 30px;
+            height: 30px;
+            display: flex;
+            border: 1px solid black;
+            border-radius: 5px;
+            background-color: #585662;
+            justify-self: center;
+            align-items: center;
+        }
+
+        a img {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main-container">
+        <div class="EXP">EXP</div>
+        <div class="newItems">
+            <div class="items">
+                <img src="battleEnd/ressources/roi.jpg" alt="">
+            </div>
+            <div class="items">
+                <img src="battleEnd/ressources/roi.jpg" alt="">
+            </div>
+            <div class="items">
+                <img src="battleEnd/ressources/roi.jpg" alt="">
+            </div>
+        </div>
+        <div class="new-deals">
+            <div class="deals"> current deals damage 3</div>
+            <img src="battleEnd/ressources/fleche.png" alt="">
+            <div class="deals"> new deals damage 6 </div>
+        </div>
+        <a href="" id="back">
+            <img src="battleEnd/ressources/yes.png" alt="">
+        </a>
+
+    </div>
+    <script>
+        // Fonction pour revenir en arrière
+        document.getElementById("back").onclick = function () {
+            history.back(); // Revenir à la page précédente
+        };
+
+        // Fonction pour aller à la page suivante
+        document.getElementById("forward").onclick = function () {
+            history.forward(); // Aller à la page suivante
+        };
+    </script>
+
+</body>
+
+</html>

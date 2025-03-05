@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1,
+    "name": "défense",
+    "description": "Protège contre une attaque.",
+    "source": "backpack/ressources/toi.jpg",
+    "bloquer": "false"
+  },
+  {
+    "id": 1,
+    "name": "défense",
+    "description": "Protège contre une attaque.",
+    "source": "backpack/ressources/toi.jpg",
+    "bloquer": "false"
+  }
+]

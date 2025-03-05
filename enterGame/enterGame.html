@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>main page </title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+
+
+
+        .galery-container {
+            position: relative;
+            width: 130vh;
+            height: 70vh;
+            border: 2px solid rgb(0, 0, 0);
+            overflow: hidden;
+            background-image: url('enterGame/ressources/BG1.png');
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+        }
+
+        .themis {
+            position: absolute;
+            left: 0;
+            top: 5%;
+            height: 18%;
+            width: 40%;
+            display: flex;
+            justify-content: center;
+            align-items: center
+        }
+
+        .themis img {
+            max-height: 100%;
+            /* Image s'adapte à la hauteur */
+            max-width: 100%;
+            /* Image reste proportionnée */
+            object-fit: contain;
+            /* Gère le redimensionnement */
+        }
+
+        .menu {
+            position: absolute;
+            width: 30%;
+            height: 60%;
+            display: flex;
+            left: 10%;
+            top: 30%;
+            /* Définit un conteneur flex */
+            flex-direction: column;
+            /* Aligne les éléments en ligne (horizontale) */
+            /* Aligne les éléments au début (modifiable) */
+            align-items: center;
+            /* Aligne les éléments verticalement au centre */
+            gap: 10px;
+            /* Ajoute un espace entre les éléments (modifiable) */
+
+        }
+
+        .projectGroup {
+            position: absolute;
+            right: 1%;
+            width: 25%;
+            height: 90%;
+            border: 1px solid white;
+            background-color: rgba(255, 255, 255, 0.598);
+            border-radius: 9px;
+            bottom: 1%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .projectGroup h1 {
+            margin-top: 0;
+            padding-bottom: 10px;
+            font-size: 30px;
+            border-bottom: 2px solid;
+        }
+
+        /* Styles généraux pour les conteneurs */
+        .start,
+        .galery,
+        .setting,
+        .exit,
+        .square {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 40px;
+            position: relative;
+            box-sizing: border-box;
+            /* Nécessaire pour positionner les pseudo-éléments */
+            transition: background-size 0.3s ease, background-image 0.3s ease, background-color 0.3s ease;
+        }
+
+        .start img,
+        /* .galery img, */
+        .setting img,
+        .exit img,
+        .square img {
+            max-height: 100%;
+            max-width: 100%;
+            object-fit: contain;
+            transition: opacity 0.3s ease;
+            /* Transition fluide pour l'opacité */
+        }
+
+        .galery img {
+            max-height: 90%;
+            max-width: 100%;
+            object-fit: contain;
+            transition: opacity 0.3s ease;
+
+        }
+
+
+
+        /* Effets au survol pour chaque conteneur */
+        .start:hover {
+            background-image: url('enterGame/ressources/Selection.png');
+            /* Image d'arrière-plan au survol */
+            background-size: 100% 80%;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .galery:hover {
+            background-image: url('enterGame/ressources/Selection.png');
+            /* Image d'arrière-plan au survol */
+            background-size: 100% 80%;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .setting:hover {
+            background-image: url('enterGame/ressources/Selection.png');
+            /* Image d'arrière-plan au survol */
+            background-size: 100% 80%;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .exit:hover {
+            background-image: url('enterGame/ressources/Selection.png');
+            /* Image d'arrière-plan au survol */
+            background-size: 100% 80%;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+
+        /* Masquer l'image initiale au survol */
+        .start:hover img,
+        .galery:hover img,
+        .setting:hover img,
+        .exit:hover img {
+            opacity: 0;
+        }
+
+        /* Pseudo-éléments pour afficher une nouvelle image */
+        .start:hover::after,
+        .galery:hover::after,
+        .setting:hover::after,
+        .exit:hover::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            z-index: 1;
+            /* Place l'image au-dessus de l'arrière-plan */
+        }
+
+        /* Images spécifiques pour chaque pseudo-élément */
+        .start:hover::after {
+            background-image: url('enterGame/ressources/StartG.png');
+        }
+
+        .galery:hover::after {
+            background-image: url('enterGame/ressources/GaleryG.png');
+        }
+
+        .setting:hover::after {
+            background-image: url('enterGame/ressources/SettingsG.png');
+        }
+
+        .exit:hover::after {
+            background-image: url('enterGame/ressources/ExitG.png');
+        }
+
+        .version {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+        }
+
+        .minicone {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            bottom: 1%;
+            right: 1%;
+            display: flex;
+            justify-content: center;
+
+        }
+
+        .minicone img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+        .minicone1 {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            bottom: 1%;
+            right: 1%;
+            display: flex;
+            justify-content: center;
+
+        }
+
+        .minicone1 img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+        .projectGroup,
+        .minicone1 {
+            visibility: hidden;
+            /* Les éléments sont cachés mais conservent leur espace dans le flux */
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        .projectGroup.show,
+        .minicone1.show {
+            visibility: visible;
+            /* Les éléments sont visibles */
+            opacity: 1;
+        }
+
+        .hidden {
+            visibility: hidden;
+            /* Cache l'élément mais il conserve son espace */
+            opacity: 0;
+        }
+
+
+        a {
+            display: block;
+            /* Transforme le lien en bloc */
+            width: 100%;
+            /* Occupe toute la largeur de son conteneur */
+            height: 100%;
+            /* Occupe toute la hauteur de son conteneur */
+        }
+    </style>
+</head>
+
+<body>
+
+    <audio id="audioPlayer" autoplay>
+        <source src="musique/ShadowedOverture.mp3" type="audio/mpeg">
+        Votre navigateur ne supporte pas l'audio.
+    </audio>
+
+
+    <div class="galery-container">
+
+        <div class="themis"> <img src="enterGame/ressources/Title1.png" alt=""></div>
+        <div class="menu">
+            <a href="/req_chapter_selection">
+                <div class="start "><img src="enterGame/ressources/Start.png" alt=""></div>
+            </a>
+            <a href="/req_galery">
+                <div class="galery "><img src="enterGame/ressources/galery.png" alt=""></div>
+            </a>
+            <a href="/req_settings">
+                <div class="setting "> <img src="/enterGame/ressources/Settings.png" alt=""></div>
+            </a>
+            <a href="">
+                <div class="square "><img src="enterGame/ressources/Square.png" alt=""></div>
+            </a>
+            <a href="">
+                <div class="exit "><img src="enterGame/ressources/Exit.png" alt=""></div>
+            </a>
+        </div>
+        <div class="projectGroup" id="projectGroup">
+            <h1>Project Group</h1>
+            <p>XXXXXXX</p>
+            <p>XXXXXXX</p>
+            <p>XXXXXXX</p>
+            <p>XXXXXXX</p>
+            <p>XXXXXXX</p>
+        </div>
+
+        <div class="minicone1" id="minicone1">
+            <img src="enterGame/ressources/PGiconAfter.png" alt="">
+        </div>
+
+        <div class="minicone" id="minicone">
+            <img src="enterGame/ressources/PGicon.png" alt="">
+        </div>
+
+        <div class="version">version 1.0</div>
+
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const minicone = document.getElementById('minicone');
+            const minicone1 = document.getElementById('minicone1');
+            const projectGroup = document.getElementById('projectGroup');
+
+            // Fonction pour afficher `minicone1` et `projectGroup` et cacher `minicone`
+            function showElements() {
+                minicone.classList.add('hidden'); // Ajoutez une classe pour cacher `minicone`
+                minicone1.classList.add('show');
+                projectGroup.classList.add('show');
+            }
+
+            // Fonction pour cacher `minicone1` et `projectGroup` et réafficher `minicone`
+            function hideElements() {
+                minicone1.classList.remove('show');
+                projectGroup.classList.remove('show');
+                minicone.classList.remove('hidden'); // Réaffiche `minicone`
+            }
+
+            // Afficher les éléments au clic sur `minicone`
+            minicone.addEventListener('click', showElements);
+
+            // Masquer les éléments si on quitte `projectGroup`
+            projectGroup.addEventListener('mouseleave', hideElements);
+        });
+
+    </script>
+    <script>
+        window.addEventListener("load", function () {
+            let audio = document.getElementById("audioPlayer");
+            audio.play().catch(error => console.log("Autoplay bloqué par le navigateur : ", error));
+        });
+
+    </script>
+    
+
+</body>
+
+</html>

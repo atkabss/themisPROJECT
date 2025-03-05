@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ENDGAME</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+
+        .main-container {
+            position: relative;
+            width: 130vh;
+            height: 70vh;
+            border: 2px solid rgb(0, 0, 0);
+            overflow: hidden;
+            background-image: url("battleEnd/ressources/BG_3.jpg");
+            background-size: cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .EXP {
+            background-color: #585662;
+            width: 40px;
+            height:40px;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .bar {
+            width: 50%;
+            height: 15px;
+            background-color: #585662;
+        }
+
+        .exp-value {
+            font-size: 20px;
+        }
+
+        .Round-Used {
+            width: 120px;
+            height: 40px;
+            font-size: 20px;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #585662;
+        }
+
+        .Round-Used-value {
+            margin-top: 0;
+            font-size: 20px;
+        }
+        .bar2{
+            width: 50%;
+            height: 5px;
+            background-color: #585662;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+        }
+        .rotate{
+            width: 30px;
+            height: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            transform: rotate(45deg);
+        }
+        #rotate1{
+            background-color: #87868e;
+        }
+        #rotate2{
+            background-color:#585662 ;
+        }
+        .current-time{
+            transform: rotate(-45deg);
+        }
+        .new-time{
+            transform: rotate(-45deg);
+        }
+        .time-passes-value{
+            font-size: 20px;
+
+        }
+        a{
+            width: 50px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+        }
+        a img{
+            height: 100%;
+            width: 100%;
+        }
+        .EXP a{
+            color: white;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main-container">
+        <div class="EXP"><a href="/req_level_Up_Bonus">EXP</a></div>
+        <div class="bar"></div>
+        <div class="exp-value">+20</div>
+        <div class="Round-Used">Round-used</div>
+        <div class="Round-Used-value">7</div>
+        <div class="bar2">
+            <div class="rotate" id="rotate1">
+                <div class="current-time" >-20</div>
+            </div>
+            <div class="rotate" id="rotate2">
+                <div class="new-time">+10</div>
+            </div>
+        </div>
+        <div class="time-passes-value">30</div>
+        <a href="/req_ending" >
+            <img src="battleEnd/ressources/finish.png" alt="">
+        </a>
+    </div>
+
+</body>
+
+</html>

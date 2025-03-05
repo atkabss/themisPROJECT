@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>ITEMS</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .notification {
+            background-color: #ffffff;
+            border: 2px solid #504b54;
+            padding: 20px;
+            width: 500px;
+            height: 400px;
+            text-align: center;
+            position: relative;
+            background-color: rgba(117, 87, 87, 0.527);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .exp {
+            color: #504b54;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .exp hr {
+            width: 50%;
+            border: none;
+            border-top: 10px solid #515053;
+            margin: 10px auto;
+        }
+
+        #expstyle {
+            background-color: #7b757f0f;
+            padding: 5px;
+        }
+
+        .message {
+            color: #504b54;
+            font-size: 18px;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+
+        .rect {
+            position: relative;
+            width: 500px;
+            height: 100px;
+            top: 150px;
+            background-color: #4d1b76;
+
+        }
+
+        .box {
+            position: relative;
+            top: -100px;
+            width: 50px;
+            height: 55px;
+            background-color: #ffffff;
+            border: 5px solid #685478;
+            margin: 10px auto 0;
+
+        }
+
+        .item-image {
+            width: 50px;
+            height: 50px;
+            object-fit: contain;
+        }
+
+        #explanation-text {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #d72511;
+            font-style: italic;
+            text-align: center;
+
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="notification">
+        <div class="exp">
+            <span id="expstyle">EXP</span>
+            <hr>
+            <span id="exp-value">{{exp}}</span>
+        </div>
+        <div class="message">
+            Item Gained
+        </div>
+        <div class="rect">
+            <div id="explanation-text">
+                <p>{{explication}}</p>
+            </div>
+
+        </div>
+        <div class="box">
+            {{itemImage | safe }}
+        </div>
+    </div>
+    <script>
+        document.body.addEventListener("click", function () {
+            // Lien de redirection, tu peux modifier l'URL selon ton besoin
+            window.location.href = "{{lien | safe }}";
+        });
+    </script>
+</body>
+
+</html>

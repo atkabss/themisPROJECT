@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #272955;
+        }
+
+        .game-container {
+            position: relative;
+            width: 130vh;
+            height: 70vh;
+            border: 2px solid rgb(90, 81, 81);
+            overflow: hidden;
+            background-image: url('chapitre1/ressources/BG_2.jpg');
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+        }
+
+        .menu-container {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            top: 0;
+            left: 0;
+            background-color: #c9c9c9;
+        }
+
+        .menu-container img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 30px;
+            height: auto;
+            object-fit: cover;
+            transition: opacity 0.5s ease;
+        }
+
+        .menu-hover {
+            opacity: 0;
+        }
+
+        .menu-container:hover .menu-hover {
+            opacity: 1;
+        }
+
+        .menu-container:hover .menu-default {
+            opacity: 0;
+        }
+
+        .PNG {
+            position: absolute;
+            width: 30%;
+            height: 80%;
+            bottom: 0;
+            left: 10%;
+        }
+
+        .PNG img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .continue {
+            position: absolute;
+            right: 0;
+            top: 50%;
+            visibility: hidden;
+            width: 200px;
+            height: 50px;
+        }
+
+        .continue a {
+            width: 100%;
+            height: 100%;
+        }
+
+        .continue img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .missionExplanation {
+            font-size: 25px;
+            background-color: #c9c9c9a9;
+            border-radius: 10px;
+            border: 2px solid black;
+            position: absolute;
+            bottom: 0;
+            width: 90%;
+            height: 40%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class=" game-container">
+        <div class="menu-container">
+            <a href="/req_menu">
+                <img src="chapitre1/ressources/icone_menu2.png" alt="Image 1" class="menu">
+                <img src="chapitre1/ressources/icone_menu1.png" alt="Image 2" class="menu-hover">
+            </a>
+        </div>
+
+        <div class="continue">
+            <a href="/req_chapitre1_map?{{lien | safe }}">
+                <img src="chapitre1/ressources/continuef.png" alt="">
+            </a>
+
+        </div>
+        <div class="PNG" id="continu">
+            <img src="chapitre1/ressources/boy.png" alt="">
+        </div>
+        <div class="missionExplanation">
+            <p>
+
+            </p>
+        </div>
+    </div>
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const paroles = {{dialogue | safe }}  ;
+
+            const missionText = document.querySelector(".missionExplanation p");
+            const characterImage = document.querySelector(".PNG img");
+            const continueDiv = document.querySelector(".continue");
+
+            let currentIndex = 0;
+
+            // Affiche le premier texte au chargement de la page
+            missionText.textContent = paroles[currentIndex];
+
+            // Ajoute un gestionnaire d'événement pour les clics sur le personnage
+            characterImage.addEventListener("click", () => {
+                currentIndex++;
+
+                if (currentIndex < paroles.length) {
+                    missionText.textContent = paroles[currentIndex];
+                } else {
+                    // Lorsque tous les textes ont été affichés, rendre le bouton "continue" visible
+                    continueDiv.style.visibility = "visible";
+                }
+            });
+        });
+
+
+    </script>
+
+
+</body>
+
+</html>

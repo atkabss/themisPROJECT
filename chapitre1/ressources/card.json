@@ -1,0 +1,65 @@
+[
+    {
+        "id": 1,
+        "name": "attaque",
+        "description": "Permet d'attaquer un joueur.",
+        "source": "chapitre1/ressources/2001.jpg",
+        "bloquer": "false"
+    },
+    {
+        "id": 2,
+        "name": "défense",
+        "description": "Protège contre une attaque.",
+        "source": "chapitre1/ressources/2002.jpg",
+        "bloquer": "false"
+    },
+    {
+        "id": 3,
+        "name": "vol",
+        "description": "Permet de voler une carte à un joueur.",
+        "source": "chapitre1/ressources/2003.jpg",
+        "bloquer": "false"
+    },
+    {
+        "id": 4,
+        "name": "soutien",
+        "description": "Offre un avantage à un autre joueur.",
+        "source": "chapitre1/ressources/2004.jpg",
+        "bloquer": "false"
+    },
+    {
+        "id": 5,
+        "name": "piège",
+        "description": "Pose un piège pour les autres joueurs.",
+        "source": "chapitre1/ressources/2005.jpg",
+        "bloquer": "false"
+    },
+    {
+        "id": 6,
+        "name": "bonus",
+        "description": "Ajoute un bonus temporaire.",
+        "source": "chapitre1/ressources/2006.jpg",
+        "bloquer": "false"
+    },
+    {
+        "id": 7,
+        "name": "contre",
+        "description": "Annule l'effet d'une carte adverse.",
+        "source": "chapitre1/ressources/2007.jpg",
+        "bloquer": "true"
+    },
+    {
+        "id": 8,
+        "name": "échange",
+        "description": "Échange une carte avec un autre joueur.",
+        "source": "chapitre1/ressources/2008.jpg",
+        "bloquer": "true"
+    },
+    {
+        "id": 9,
+        "name": "échange",
+        "description": "Échange une carte avec un autre joueur.",
+        "source": "chapitre1/ressources/2009.jpg",
+        "bloquer": "true"
+    }
+]

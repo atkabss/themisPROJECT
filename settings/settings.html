@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+
+        .settings-container {
+            position: relative;
+            width: 130vh;
+            height: 70vh;
+            border: 2px solid rgb(0, 0, 0);
+            background-color: #c9c9c9;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            /* Espacement uniforme entre les éléments */
+            align-items: center;
+            /* Centrer horizontalement */
+            padding: 20px;
+        }
+
+        .return {
+            display: flex;
+            flex-direction: row;
+            position: absolute;
+            font-size: 20px;
+            top: 0;
+            left: 0;
+        }
+
+        .return p {
+            margin-top: 0;
+        }
+
+        .return img {
+            width: 30px;
+            height: 30px;
+        }
+
+        .section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            /* Centrer les sous-éléments horizontalement */
+            width: 100%;
+            /* Occuper toute la largeur disponible */
+        }
+
+        .section img {
+            width: 50px;
+            /* Ajuster la taille des images */
+            height: 50px;
+            margin-bottom: 10px;
+        }
+
+        .section hr {
+            width: 80%;
+            /* Limiter la largeur de la ligne */
+            border: none;
+            border-top: 2px solid black;
+            /* Ligne personnalisée */
+            margin: 10px 0;
+        }
+
+        .section p {
+            font-size: 24px;
+            margin: 5px 0;
+        }
+
+        .nada {
+            width: 80%;
+            height: 30px;
+            background-color: white;
+            border: 1px solid black;
+            margin: 5px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="settings-container">
+        <a href="{{return}}" class="return">
+            <img src="settings/ressources/return.png" alt="">
+            <p>Return</p>
+        </a>
+        <div class="section">
+            <img src="settings/ressources/graphic.png" alt="">
+            <hr>
+            <p>Graphics</p>
+            <div class="nada"></div>
+            <div class="nada"></div>
+        </div>
+        <div class="section">
+            <img src="settings/ressources/sond.png" alt="">
+            <hr>
+            <p>Sound</p>
+            <div class="nada"></div>
+            <div class="nada"></div>
+        </div>
+
+    </div>
+</body>
+
+</html>

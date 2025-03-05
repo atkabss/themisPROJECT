@@ -1,0 +1,20 @@
+[
+  {
+    "chapitre": true,
+    "src": "/req_entrer_chapitre1",
+    "image_de_fond": "chapterSelection/ressources/bg_1.jpg",
+    "image_de_fond_carte": "chapterSelection/ressources/4Lax.gif"
+  },
+  {
+    "chapitre": false,
+    "image_de_fond": ""
+  },
+  {
+    "chapitre": false,
+    "image_de_fond": ""
+  },
+  {
+    "chapitre": false,
+    "image_de_fond": ""
+  }
+]

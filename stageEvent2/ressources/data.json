@@ -1,0 +1,51 @@
+[
+    {
+      "id": 1,
+      "exp": 10,
+      "item": "item1.jpg",
+      "explanation": "Ceci est une potion qui restaure 50 points de vie."
+    },
+    {
+      "id": 2,
+      "exp": 20,
+      "item": "item2.jpg",
+      "explanation": "Ceci est une potion qui restaure 50 points de vie."
+    },
+    {
+      "id": 3,
+      "exp": 30,
+      "item": "item3.jpg",
+      "explanation": "Ceci est une potion qui restaure 50 points de vie."
+    },
+    {
+      "id": 4,
+      "exp": 40,
+      "item": "item4.jpg",
+      "explanation": "Ceci est une potion qui restaure 50 points de vie."
+    },
+    {
+      "id": 5,
+      "exp": 50,
+      "item": "item5.jpg",
+      "explanation": "Ceci est une potion qui restaure 50 points de vie."
+    },
+    {
+      "id": 6,
+      "exp": 60,
+      "item": "item6.jpg",
+      "explanation": "Ceci est une potion qui restaure 50 points de vie."
+    },
+    {
+      "id": 7,
+      "exp": 70,
+      "item": "item7.jpg",
+      "explanation": "Ceci est une potion qui restaure 50 points de vie."
+    },
+    {
+      "id": 8,
+      "exp": 80,
+      "item": "item8.jpg",
+      "explanation": "Ceci est une potion qui restaure 50 points de vie."
+    }
+  ]
+  

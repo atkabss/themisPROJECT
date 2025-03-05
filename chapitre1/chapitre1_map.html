@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Carte interactive</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #1d273a;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+
+    }
+
+    .game-container {
+      position: relative;
+      width: 130vh;
+      height: 70vh;
+      border: 2px solid rgb(0, 0, 0);
+      overflow: hidden;
+      background-color: #c9c9c9;
+      display: flex;
+      justify-content: center;
+    }
+
+    .header-info {
+      position: absolute;
+      width: 100%;
+      height: 10%;
+      background-color: #c9c9c900;
+    }
+
+    .menu-container {
+      position: relative;
+      width: 30px;
+      height: 30px;
+      background-color: #c9c9c900;
+    }
+
+    .menu-container img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 30px;
+      height: auto;
+      object-fit: cover;
+      transition: opacity 0.5s ease;
+    }
+
+    .menu-hover {
+      opacity: 0;
+    }
+
+    .menu-container:hover .menu-hover {
+      opacity: 1;
+    }
+
+    .menu-container:hover .menu-default {
+      opacity: 0;
+    }
+
+    #bar-EXP hr {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border: 5px solid #333836;
+      width: 20vh;
+      margin: 0;
+    }
+
+    .EXP-Cadre {
+      position: absolute;
+      width: 4vh;
+      /* Largeur du losange */
+      height: 4vh;
+      /* Hauteur du losange */
+      top: 20%;
+      left: 48%;
+      transform: translate(-50%, -50%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transform: rotate(45deg);
+      /* Tourne le conteneur pour créer un losange */
+      background-color: #333836;
+      /* Couleur du losange */
+
+    }
+
+    #EXP {
+      transform: rotate(-45deg);
+      /* Compense la rotation pour le texte */
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    .player-info {
+      position: absolute;
+      background-color: #c9c9c9;
+      transform: translate(-50% -50%);
+      top: 0%;
+      right: 0%;
+      width: 35%;
+      height: 100%;
+    }
+
+    #txtEXP {
+      background-color: #333836;
+      width: 6.6vh;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: white;
+    }
+
+    #txtEXP-bar {
+      position: absolute;
+      bottom: 0%;
+      background-color: #333836;
+      width: 100%;
+      height: 20%;
+
+
+    }
+
+    #pv img {
+      position: absolute;
+      height: 2vh;
+      top: 3vh;
+      left: 8vh;
+    }
+
+    #pv-points {
+      position: absolute;
+      font-size: 2.5vh;
+      top: 2.5vh;
+      left: 18vh;
+    }
+
+    #energie {
+      position: absolute;
+      display: flex;
+      flex-direction: row;
+      width: 10vh;
+      /* Largeur du conteneur */
+      height: 4vh;
+      /* Hauteur du conteneur */
+      top: 0%;
+      left: 12vh;
+      justify-content: space-between;
+      /* Aligne les éléments avec de l'espace entre */
+      align-items: center;
+      /* Aligne verticalement au centre */
+      background-color: #c9c9c9;
+    }
+
+    #energie1 {
+      background-color: red;
+      width: 2vh;
+      /* Largeur de chaque barre */
+      height: 100%;
+      /* Hauteur de chaque barre */
+    }
+
+    #energie2 {
+      background-color: red;
+      width: 2vh;
+      height: 100%;
+    }
+
+    #energie3 {
+      background-color: red;
+      width: 2vh;
+      height: 100%;
+    }
+
+    .game-map {
+      background-color: rgba(255, 0, 0, 0);
+      position: absolute;
+      width: 600px;
+      height: 150px;
+      top: 36vh;
+      display: flex;
+      flex-wrap: wrap;
+      /* Permettre le passage à la ligne */
+      justify-content: flex-start;
+      /* Alignement des missions */
+      background-color: rgba(150, 120, 120, 0);
+      align-content: flex-start;
+      /* Évite un espace vertical entre les lignes */
+
+    }
+
+    .mission {
+      width: 10%;
+      /* Largeur fixe pour chaque mission */
+      height: 50px;
+      /* Hauteur fixe pour chaque mission */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-weight: bold;
+      position: relative;
+      background-color: rgba(255, 0, 0, 0);
+    }
+
+    .conn1 {
+      position: absolute;
+      width: 50%;
+      height: 50%;
+      right: 0px;
+      bottom: 0;
+      border: 2px solid black;
+      border-bottom: 0;
+      border-right: 0;
+
+    }
+
+    .conn2 {
+      position: absolute;
+      width: 50%;
+      height: 50%;
+      left: -2px;
+      top: -2px;
+      border: 2px solid rgb(0, 0, 0);
+      border-top: 0;
+      border-left: 0;
+    }
+    .conn3 {
+      position: absolute;
+      width: 50%;
+      height: 50%;
+      left: -2px;
+      bottom: 0px;
+      border: 2px solid rgb(0, 0, 0);
+      border-bottom: 0;
+      border-left: 0;
+ 
+    }
+
+
+    .shoot {
+      position: absolute;
+      background-color: black;
+      width: 80%;
+      height: 70%;
+      border-radius: 5px;
+
+    }
+
+    .shoot a {
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+    }
+
+
+    #CardIcone {
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      background-color: rgba(255, 0, 0, 0);
+      bottom: 0;
+      left: 0;
+    }
+
+
+    #popup {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      display: none;
+      /* Masque la pop-up au chargement */
+    }
+
+    .popup-content {
+      position: relative;
+      background-color: rgba(118, 117, 117, 0.669);
+      padding: 20px;
+      border-radius: 8px;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      width: 400px;
+      /* Largeur augmentée */
+      height: 300px;
+      /* Hauteur augmentée */
+
+    }
+
+    #closePopup {
+      position: absolute;
+      bottom: 0%;
+    }
+
+    .injection-info {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      /* Espacement entre les éléments */
+      margin: 20px 0;
+    }
+
+    /* Style des div contenant les PV */
+    .PV {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #333836;
+      height: 15vh;
+
+    }
+
+    /* Images dans les PV et flèche */
+    .PV img,
+    #fleche img {
+      width: 100%;
+      height: auto;
+    }
+
+    /* Section "Yes" et "No" */
+    .selection {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 20px;
+    }
+
+    /* Images Yes et No */
+    .selection div img {
+      width: 60px;
+      /* Taille ajustable */
+      height: auto;
+      cursor: pointer;
+      /* Ajout d'un pointeur pour interactivité */
+    }
+
+    .info-PNG {
+      background-color: rgba(0, 0, 255, 0);
+      position: absolute;
+      width: 30rem;
+      height: 10rem;
+      top: 3rem;
+      left: 0;
+      overflow: hidden;
+
+    }
+
+    .PNG {
+      background-color: #1d273a00;
+      position: absolute;
+      width: 9rem;
+      height: 100%;
+
+    }
+
+    .PNG img {
+      width: 100%;
+
+    }
+
+    .dialogue {
+      border: 2px white;
+      border-radius: 10px;
+      display: flex;
+      background-color: #1e632693;
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 50%;
+
+    }
+  </style>
+</head>
+
+<body>
+  <div class="game-container ">
+    <div class="header-info">
+      <div class="menu-container">
+        <a href="/req_menu">
+          <img src="chapitre1/ressources/icone_menu2.png" alt="Image 1" class="menu">
+          <img src="chapitre1/ressources/icone_menu1.png" alt="Image 2" class="menu-hover">
+        </a>
+      </div>
+      <div id="bar-EXP">
+        <hr>
+      </div>
+      <div class="EXP-Cadre">
+        <div id="EXP">-20</div>
+      </div>
+      <div class="player-info">
+        <div id="txtEXP">EXP</div>
+        <div id="txtEXP-bar"></div>
+        <!-- 
+          <div id="energie1"></div>
+          <div id="energie2"></div>
+          <div id="energie3"></div> 
+        -->
+        <div id="pv">
+          <img src="chapitre1/ressources/PV.png">
+        </div>
+        <div id="pv-points">50/50</div>
+      </div>
+    </div>
+    <div class="info-PNG">
+      <div class="PNG">
+        <img src="chapitre1/ressources/boy.png" alt="">
+      </div>
+      <div class="dialogue">
+        <p>
+
+        </p>
+
+      </div>
+
+    </div>
+    <div class="game-map">
+      <div class="mission" style=" visibility: {{missio1 | safe }} ;">
+        <div class="conn1" style="border-top: 0;">
+
+        </div>
+
+        <div class="shoot" >
+          <a href="/req_chap1_stage_event1?event1ID=0" id="mission-1"></a>
+        </div>
+
+      </div>
+      <div class="mission" style="visibility: hidden;">
+        <div class="conn1">
+
+        </div>
+        <div class="conn2"></div>
+        <div class="shoot">
+          <a href="req_backpack_chap1.js"></a>
+        </div>
+
+      </div>
+      <div class="mission" style=" visibility: {{missio5| safe}} ;" >
+        <div class="conn1">
+
+        </div>
+        <div class="conn2" style="visibility: hidden;" ></div>
+        <div class="shoot">
+          <a href="/req_loading?enemies=1&enemies=1&enemies=1" id="mission-5">5</a>
+        </div>
+
+      </div>
+      <div class="mission" style=" visibility: {{missio15 | safe}} ;" >
+        <div class="conn1" style="visibility: hidden" >
+
+        </div>
+        <div class="conn3"></div>
+        <div class="shoot" style="visibility: hidden;" >
+          <a href="req_backpack_chap1.js"></a>
+        </div>
+
+      </div>
+      <div class="mission" style="visibility: hidden">
+        <div class="conn1" style="visibility: hidden;">
+
+        </div>
+        <div class="conn3" ></div>
+        <div class="shoot" style="visibility: hidden;" >
+          <a href="req_backpack_chap1.js"></a>
+        </div>
+
+      </div>
+      <div class="mission" style="visibility: {{missio9 | safe}} ;" >
+        <div class="conn1">
+
+        </div>
+        <div class="conn2" style="visibility: hidden"></div>
+        <div class="shoot">
+          <a href="req_backpack_chap1.js" id="mission-9"></a>
+        </div>
+
+      </div>
+      <div class="mission" style="visibility: {{missio10| safe}} ;">
+        <div class="conn1" style="border-left: 0;">
+
+        </div>
+        <div class="conn2" style="border-right: 0;"></div>
+        <div class="shoot">
+          <a href="req_chap1_stage_event1" id="mission-10"></a>
+        </div>
+
+      </div>
+      <div class="mission" style="visibility: {{missio16| safe}} ;">
+        <div class="conn1" style="visibility: hidden;">
+
+        </div>
+        <div class="conn3" ></div>
+        <div class="shoot" style="visibility: hidden; ">
+          <a href="req_backpack_chap1.js" id="mission-16"></a>
+        </div>
+
+      </div>
+      <div class="mission" style="visibility: hidden;">
+        <div class="conn1" style="border-top: 0;">
+
+        </div>
+        <div class="conn3" ></div>
+        <div class="shoot" style="visibility: hidden;">
+          <a href="req_backpack_chap1.js"></a>
+        </div>
+
+      </div>
+      <div class="mission" style="visibility: hidden;">
+        <div class="conn1">
+
+        </div>
+        <div class="conn2" ></div>
+        <div class="shoot">
+          <a href="req_backpack_chap1.js"></a>
+        </div>
+
+      </div>
+      <div class="mission" style="visibility: {{missio2| safe}} ;">
+        <div class="conn1" style="border-left: 0;">
+
+        </div>
+        <div class="conn2" style="border-bottom: 0;"></div>
+        <div class="shoot">
+          <a href="req_chap1_stage_event1?event1ID=0" id="mission-2"></a>
+        </div>
+
+      </div>
+      <div class="mission" style="visibility: {{missio3 | safe}} ;">
+        <div class="conn1" style="border-left: 0;">
+
+        </div>
+        <div class="conn2" style="border-right: 0;"></div>
+        <div class="shoot">
+          <a href="req_chap1_stage_event1?event1ID=1" id="mission-3"></a>
+        </div>
+
+      </div>
+      <div class="mission" style="visibility: {{missio4| safe}} ;">
+        <div class="conn1" style="border-left: 0;">
+
+        </div>
+        <div class="conn2" {{precis | safe }} ></div>
+        <div class="shoot">
+          <a href="req_chap1_stage_event2?link=0&choix_miss=mission1" id="mission-4"></a>
+        </div>
+
+      </div>
+      <div class="mission" style="visibility: {{missio6| safe}} ;">
+        <div class="conn1" style="border-left: 0;">
+
+        </div>
+        <div class="conn2" {{precis | safe }}></div>
+        <div class="shoot">
+          <a href="/req_chap1_stage_event1?event1ID=2" id="mission-6"></a>
+        </div>
+
+      </div>
+      <div class="mission" style="visibility: {{missio7| safe}} ;">
+        <div class="conn1" style="border-left: 0;">
+
+        </div>
+        <div class="conn2" style="border-right: 0;"></div>
+        <div class="shoot">
+          <a href="/Stage_Combat2/Combat.html" id="mission-7"></a>
+        </div>
+
+      </div>
+      <div class="mission" style="visibility: {{missio8 | safe}} ;">
+        <div class="conn1" style="border-left: 0;">
+
+        </div>
+        <div class="conn2" ></div>
+        <div class="shoot">
+          <a href="req_backpack_chap1.js" id="mission-8"></a>
+        </div>
+
+      </div>
+      <div class="mission"  style="visibility: {{missio11 | safe}} ;" >
+        <div class="conn1" style="border-left: 0;">
+
+        </div>
+        <div class="conn2" style="border-right: 0;"></div>
+        <div class="shoot">
+          <a href="req_backpack_chap1.js" id="mission-11"></a>
+        </div>
+
+      </div>
+      <div class="mission" style="visibility: {{missio12 | safe}} ;">
+        <div class="conn1" style="border-left: 0;">
+
+        </div>
+        <div class="conn2" ></div>
+        <div class="shoot">
+          <a href="req_backpack_chap1.js" id="mission-12"></a>
+        </div>
+
+      </div>
+      <div class="mission" style="visibility: {{missio13 | safe}} ;">
+        <div class="conn1" style="border-left: 0;">
+
+        </div>
+        <div class="conn2" style="border-right: 0;" ></div>
+        <div class="shoot">
+          <a href="req_backpack_chap1.js" id="mission-13"></a>
+        </div>
+
+      </div>
+      <div class="mission" style="visibility: {{missio14 | safe}} ;" >
+        <div class="conn1"  style="visibility: hidden;">
+
+        </div>
+        <div class="conn2" style="border-right: 0;"></div>
+        <div class="shoot">
+          <a href="/req_chap1_stage_event3" id="mission-14"></a>
+        </div>
+
+      </div>
+      <!-- <div class="mission" style="visibility: hidden;">
+        <div class="conn1">
+
+        </div>
+        <div class="conn2"></div>
+        <div class="shoot">
+          <a href="req_backpack_chap1.js"></a>
+        </div>
+
+      </div>
+      <div class="mission" style="visibility: hidden;">
+        <div class="conn1">
+
+        </div>
+        <div class="conn2"></div>
+        <div class="shoot">
+          <a href="req_backpack_chap1.js"></a>
+        </div>
+
+      </div>
+      <div class="mission" style="visibility: hidden;">
+        <div class="conn1">
+
+        </div>
+        <div class="conn2"></div>
+        <div class="shoot">
+          <a href="req_backpack_chap1.js"></a>
+        </div>
+
+      </div>
+      <div class="mission" style="visibility: hidden;">
+        <div class="conn1">
+
+        </div>
+        <div class="conn2"></div>
+        <div class="shoot">
+          <a href="req_backpack_chap1.js"></a>
+        </div>
+
+      </div>
+      <div class="mission" style="visibility: hidden;">
+        <div class="conn1">
+
+        </div>
+        <div class="conn2"></div>
+        <div class="shoot">
+          <a href="req_backpack_chap1.js"></a>
+        </div>
+
+      </div>
+      <div class="mission" style="visibility: hidden;">
+        <div class="conn1">
+
+        </div>
+        <div class="conn2"></div>
+        <div class="shoot">
+          <a href="req_backpack_chap1.js"></a>
+        </div>
+
+      </div>
+      <div class="mission" style="visibility: hidden;">
+        <div class="conn1">
+
+        </div>
+        <div class="conn2"></div>
+        <div class="shoot">
+          <a href="req_backpack_chap1.js"></a>
+        </div>
+
+      </div>
+      <div class="mission" style="visibility: hidden;">
+        <div class="conn1">
+
+        </div>
+        <div class="conn2"></div>
+        <div class="shoot">
+          <a href="req_backpack_chap1.js"></a>
+        </div>
+
+      </div>
+      <div class="mission" style="visibility: hidden;">
+        <div class="conn1">
+
+        </div>
+        <div class="conn2"></div>
+        <div class="shoot">
+          <a href="req_backpack_chap1.js"></a>
+        </div>
+
+      </div>
+      <div class="mission"  style="visibility: hidden;">
+        <div class="conn1">
+
+        </div>
+        <div class="conn2"></div>
+        <div class="shoot">
+          <a href="req_backpack_chap1.js"></a>
+        </div>
+
+      </div> -->
+
+
+    </div>
+
+    <a href="/req_backpack_chap1" id="CardIcone"><img src="chapitre1/ressources/minicarteicone.png" alt=""></a>
+  </div>
+
+
+  <script>
+    let count = 6; // Nombre total de missions
+    const missionTexts = ["La première mission consiste à chercher des indices.", "La deuxième mission consiste à trouver le coupable.", "La troisième consiste à vérifier les preuves.", "La quatrième consiste à se battre contre le super méchant.", "La cinquième consiste à faire beaucoup de preuves.", "La sixième consiste à se reposer."];
+
+    const missions = [
+      document.getElementById("mission1"),
+      document.getElementById("mission2"),
+      document.getElementById("mission3"),
+      document.getElementById("mission4"),
+      document.getElementById("mission5"),
+      document.getElementById("mission6")
+    ];
+
+    const dialogueElement = document.querySelector(".dialogue p");
+    const connexion2 = document.getElementById("connexion2");
+    const character = document.querySelector(".PNG img");
+
+    character.addEventListener("click", () => {
+      if (count > 0) {
+        const missionIndex = 6 - count; // Détermine la mission actuelle
+        missions[missionIndex].style.visibility = "visible"; // Rendre visible la mission
+        dialogueElement.textContent = missionTexts[missionIndex]; // Changer le texte du dialogue
+
+        // Gestion spéciale pour la mission 4
+        if (missionIndex === 3) {
+          connexion2.style.visibility = "visible";
+        }
+
+        count--; // Décrémenter le compteur
+
+        // Si le compteur atteint 0, désactiver le clic
+        if (count === 0) {
+          character.removeEventListener("click", this);
+        }
+      }
+    });
+  </script>
+ <script>
+  // Tableau de 15 phrases
+const phrases = [
+  "Une session a ete ouverte pour juger le grand chef de la mafia guzman sur plusieurs de ces crimes  ",
+  "voyons ce qui s'est passe durant la session un peu plus en detail ",
+  "J'ai a ma disposition de nouvelles indices pour commencer cette investiguation ",
+  "Jai reussi a m'infiltrer dans son quartier général, et a rentrer dans son bureau, il que je trouve des preuves contre lui !",
+  "il ya malheursement eu quelques complication mais jai reussi a trouver les preuves cependant je dois eliminer ce garde ",
+  "Jai reussi a trouver les preuves du premier il faut que je menfui rapidement de la zone  !",
+  "Mission 7, attention au défi.",
+  "La mission 8 est importante.",
+  "Vous voici dans la mission 9.",
+  "Mission 10 : concentration requise.",
+  "La mission 11 commence ici.",
+  "Mission 12, presque à la fin !",
+  "Mission 13 : une étape cruciale.",
+  "nous arrivons a la fin dun long periple ... que dois je faire pour la suite ...?",
+  "Mission 15 : la dernière étape !"
+];
+
+// Sélection de la balise <p> dans la div dialogue
+const dialogueParagraph = document.querySelector(".dialogue p");
+
+// Fonction pour afficher une phrase selon l'ID de la mission
+function afficherPhrase(event) {
+  const aElement = event.currentTarget.querySelector(".shoot a"); // Sélection de la balise <a>
+  if (aElement) {
+    const missionId = aElement.id; // Extrait l'ID (ex : "mission-1")
+    const index = parseInt(missionId.split("-")[1]) - 1; // Récupère l'index (ex : "1" -> 0)
+    if (phrases[index]) {
+      dialogueParagraph.textContent = phrases[index]; // Affiche la phrase correspondante
+    }
+  }
+}
+
+// Fonction pour effacer le texte dans la balise <p>
+function effacerPhrase() {
+  dialogueParagraph.textContent = ""; // Vide la balise <p>
+}
+
+// Ajout des écouteurs sur chaque div avec la classe "mission"
+const missionss = document.querySelectorAll(".mission");
+missionss.forEach((mission) => {
+  mission.onmouseover = afficherPhrase;
+  mission.onmouseout = effacerPhrase;
+});
+
+</script>
+  <!-- 
+  <div id="popup">
+
+    <div class="popup-content">
+      <p>Use the hp injection !</p>
+      <div class="injection-info">
+        <div class="PV" id="currentPV"><img src="chapitre1/ressources/currentPV.png" alt="Current PV"></div>
+        <div id="fleche"><img src="chapitre1/ressources/fleche.png" alt="Arrow"></div>
+        <div class="PV" id="maxPV"><img src="chapitre1/ressources/maxPV.png" alt="Max PV"></div>
+      </div>
+
+      <div class="selection">
+        <div id="yes"><img src="chapitre1/ressources/yes.png" alt="Yes"></div>
+        <div id="no"><img src="chapitre1/ressources/no.png" alt="No"></div>
+
+
+        <button id="closePopup">close</button>
+      </div>
+    </div>
+
+    <script>
+      // Sélection des éléments
+      const energie = document.getElementById('energie');
+      const popup = document.getElementById('popup');
+      const closePopup = document.getElementById('closePopup');
+
+      // Affiche la pop-up au clic sur "energie"
+      energie.addEventListener('click', () => {
+        popup.style.display = 'flex'; // Affiche la pop-up
+      });
+
+      // Ferme la pop-up au clic sur "Fermer"
+      closePopup.addEventListener('click', () => {
+        popup.style.display = 'none'; // Cache la pop-up
+      });
+
+    </script>
+
+-->
+
+
+
+
+</body>
+
+</html>

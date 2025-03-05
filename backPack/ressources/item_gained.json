@@ -1,0 +1,16 @@
+[
+  {
+    "id": 2,
+    "name": "défense",
+    "description": "Protège contre une attaque.",
+    "source": "galery/ressources/item1.jpg",
+    "bloquer": "false"
+  },
+  {
+    "id": 2,
+    "name": "défense",
+    "description": "Protège contre une attaque.",
+    "source": "galery/ressources/item1.jpg",
+    "bloquer": "false"
+  }
+]

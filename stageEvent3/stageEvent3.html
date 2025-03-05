@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EVENT3</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+
+        .game-container {
+            position: relative;
+            width: 130vh;
+            height: 70vh;
+            border: 2px solid rgb(0, 0, 0);
+            overflow: hidden;
+            background-color: #c9c9c9;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .menu-container {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            top: 0;
+            left: 0;
+            background-color: #c9c9c9;
+        }
+
+        .menu-container img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 30px;
+            height: auto;
+            object-fit: cover;
+            transition: opacity 0.5s ease;
+        }
+
+        .menu-hover {
+            opacity: 0;
+        }
+
+        .menu-container:hover .menu-hover {
+            opacity: 1;
+        }
+
+        .menu-container:hover .menu-default {
+            opacity: 0;
+        }
+
+        #title {
+            color: white;
+            margin-bottom: 0;
+        }
+
+        hr {
+            width: 80%;
+            margin: 0;
+            border: 2px solid black;
+            border-radius: 10px;
+        }
+
+        .gaming-info {
+            margin-top: 0;
+            color: white;
+            background-color: rgb(70, 66, 66);
+            width: 90%;
+            height: 60%;
+            border-radius: 30px;
+        }
+
+        .gaming-info p {
+            padding: 10px;
+        }
+
+        .choix-info {
+            color: white;
+            border: 2px solid black;
+            border-radius: 10px;
+            background-color: rgb(70, 66, 66);
+            width: 90%;
+            height: 20%;
+            padding: ;
+        }
+
+        .choix {
+            display: flex;
+            flex-direction: row;
+            gap: 50px;
+        }
+
+        .choice {
+            display: flex;
+            background-color: rgb(83, 83, 90);
+            width: 100px;
+            height: 30px;
+            margin-bottom: 10px;
+            border: 2px solid black;
+            border-radius: 10px;
+            justify-content: center;
+            align-items: center;
+        }
+        a{
+            text-decoration: none;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="game-container">
+        <div class="menu-container">
+            <a href="/req_menu">
+                <img src="stageEvent3/ressources/icone_menu2.png" alt="Image 1" class="menu">
+                <img src="stageEvent3/ressources/icone_menu1.png" alt="Image 2" class="menu-hover">
+              </a>
+        </div>
+        <h3 id="title">Recapitulatif de la mission </h3>
+        <hr>
+        <div class="gaming-info">
+            <p>
+                Le principal suspect, un chef cuisinier réputé, affirme n'avoir aucun lien avec le crime. Pourtant, son comportement nerveux et certaines incohérences dans ses déclarations vous ont poussé à examiner de plus près sa cuisine.
+
+                Sur place, vous faites plusieurs découvertes troublantes :
+                
+                Un couteau ensanglanté, soigneusement dissimulé dans une boîte de céréales.
+                Des traces de sang effacées à moitié sur le sol près du plan de travail, comme si quelqu'un avait tenté de nettoyer précipitamment.
+                Une liste écrite à la main, contenant le nom de la victime et une série de mots énigmatiques liés à des plats spécifiques.
+                Ces indices vous laissent face à un dilemme : agir immédiatement, approfondir les analyses ou chercher des réponses auprès du suspect. Le temps presse, et chaque minute compte pour résoudre l’affaire.
+                
+                Que faites-vous ?                
+            </p>
+        </div>
+        <div class="choix-info">
+            <p id="info-text"></p>
+        </div>
+        <div class="choix">
+            <div class="choice" id="first"><a href="/req_stage_event21?link=0"> choix 1</a></div>
+            <div class="choice" id="second"><a href="/req_stage_event21?link=2"> choix 2</a></div>
+            <div class="choice" id="third"><a href="/req_stage_event21?link=3"> choix 3</a></div>
+        </div>
+    </div>
+    <script>
+        const choix = [
+            "Faire arrêter immédiatement le suspect en présentant les preuves trouvées comme suffisamment accablantes.",
+            "Convoquer un expert légiste pour analyser en détail les preuves collectées avant de prendre une décision finale.",
+            "Interroger à nouveau le suspect pour confronter ses déclarations avec les éléments découverts, espérant obtenir des aveux."
+        ];
+
+        const infoText = document.getElementById("info-text");
+
+        document.getElementById("first").addEventListener("mouseover", () => {
+            infoText.textContent = choix[0];
+        });
+
+        document.getElementById("second").addEventListener("mouseover", () => {
+            infoText.textContent = choix[1];
+        });
+
+        document.getElementById("third").addEventListener("mouseover", () => {
+            infoText.textContent = choix[2];
+        });
+
+        // Optionally, clear the text when the mouse leaves the choice elements
+        const choices = document.querySelectorAll(".choice");
+        choices.forEach(choice => {
+            choice.addEventListener("mouseout", () => {
+                infoText.textContent = "";
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <img id="BackFond" src="public/images/Back.jpg">
+        <!-- 顶部菜单 -->
+        <div class="menu-icon">
+            <img class="default-img" src="public/images/Menu_2.png">
+            <img class="hover-img" src="public/images/Menu_1.png">
+        </div>
+    
+        <!-- 回合数显示 -->
+        <div class="round-number">
+            <div class="round-indicator">
+                <img class="round-bg" src="public/images/Tour_gauche.png" alt="回合背景">
+                <div class="round-labels" id="Tour-IMG">
+                    <img class="round-turn-img" src="public/images/Tour-ours.png" alt="我方回合">
+                    <!--<img class="round-turn-img" src="public/images/回合数-敌方.png" alt="敌方回合">-->
+                </div>
+                <div class="round-counter" id="Tour-Number">1</div>
+                <img class="round-bg" src="public/images/Tour_droite.png" alt="回合背景">
+            </div>
+        </div>
+    
+        <!-- 背景区域 -->
+        <div class="background"  id="dropZone">
+            <!-- 玩家角色图片和血条 -->
+            <div class="player-section">
+                <div class="player-character">
+                    <img class="player-character" src="public/images/2D_ppl.png" alt="2D小人">
+                </div>
+                <div class="bar">
+                    <div id="player-health-bar" class="hp">
+                        <div id="player-health-text" class="health-text"></div>
+                    </div>
+                </div>
+                <div class="shield-icon">
+                    <div id="player-shield-img">
+                    </div>
+                    <div id="player-shield-number">
+                    </div>
+                </div>
+                <div class="controls">
+                    <button id="damage-btn">Take Damage</button>
+                    <button id="heal-btn">Heal</button>
+                </div>
+            </div>
+
+            <div id="Affiche-Zone">
+                <div id="card-info-panel">
+
+                </div>
+            </div>
+    
+            <!-- 敌人区域 -->
+            <div class="enemy-section" id="Enemy-Part">
+                <div class="enemy" id="enemy-1" data-id="0">
+                    <div class="enemy-intention"  id="enemy-intention-1">
+                        <img class="enemy-intention" id="Itention-1" data-type="Attack-M" src="public/images/ittention-attack.PNG" alt="意图-进攻">
+                        <br>
+                        <span id="Resultat-1">10</span>
+                    </div>
+                    <div class="enemy-icon"> 
+                        <img class="enemy-icon" src="public/images/Enemie2.png" alt="Mafia_Minior">
+                    </div>
+                    <div class="bar"  id="health-bar-1">
+                        <div class="hp" id="health-text-1">
+                        </div>
+                    </div>
+                </div>
+                <div class="enemy" id="enemy-2" data-id="0">
+                    <div class="enemy-intention"  id="enemy-intention-2">
+                        <img class="enemy-intention" id="Itention-2" data-type="Attack-M" src="public/images/ittention-attack.PNG" alt="意图-进攻">
+                        <br>
+                        <span id="Resultat-2">9</span>
+                    </div>
+                    <div class="enemy-icon"> 
+                        <img class="enemy-icon" src="public/images/Enemie2.png" alt="Mafia_Minior">    
+                    </div>
+                    <div class="bar"  id="health-bar-2">
+                        <div class="hp" id="health-text-2">
+                        </div>
+                    </div>
+                </div>
+                <div class="enemy" id="enemy-3" data-id="0">
+                    <div class="enemy-intention" id="enemy-intention-3">
+                        <img class="enemy-intention" id="Itention-3" data-type="Defense-Shield" src="public/images/ittention-defense.PNG" alt="意图-防御">
+                        <br>
+                        <span id="Resultat-3">13</span>
+                    </div>
+                    <div class="enemy-icon">
+                        <img class="enemy-icon" src="public/images/Enemie2.png" alt="Mafia_Minior">
+                    </div>
+                    <div class="bar"  id="health-bar-3">
+                        <div class="hp" id="health-text-3">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+    <!-- 新的容器来排列底部元素 -->
+    <div class="container-bottom">
+        <!-- 卡牌区域 -->
+        <div class="cards"  id="cards-container">
+        </div>
+
+        <!-- 卡牌堆 -->
+         <div class = "Desk_Cartes">
+            <div class="Desk-icon">
+                <img class="default-img" src="public/images/Bag_1.png" alt="默认菜单">
+                <img class="hover-img" src="public/images/Bag_2.png" alt="悬浮标菜单">
+            </div>
+            <div class="Desk_Number">
+                10/10
+            </div>
+         </div>
+    
+        <!-- 能量条区域 -->
+        <div class="cost">
+            <div class="cost-icon"> 
+                <img class="cost-icon" id="Cost_Rest" src="public/images/Cost_5.png" alt="能量图标">
+            </div>
+            <div class="cost-bar" id="cost-bar">5/5</div>
+        </div>
+    
+        <!-- 结束回合按钮区域 -->
+        <div class="end-turn" id="end-turn">
+            <img class="default-img" src="public/images/End_Button.png" alt="结束回合按钮">
+            <img class="hover-img" src="public/images/End_Button1.png" alt="结束回合按钮悬停">
+        </div>
+    </div>    
+
+
+    <!--Base Function;Rien gestion sur l'autre-->
+    <script src="Data_FB.js"></script>
+    <script src="Situation_FB.js"></script>
+    <script src="Update_Hp_Joueur.js"></script>
+    <script src="Damage_Player.js"></script>
+    <script src="Monster.js"></script>
+    <script src="Skill_Card.js"></script>
+    <script src="Cartes_List_Now.js"></script>
+    
+    <!--Construire par Les Bases Functions-->
+    <script src="Ittention.js"></script>
+    <script src="Creat_cartes.js"></script>
+
+    <!--Lanceur , le principale JSfront page-->
+    <script src="Lancer.js"></script>
+
+</body>
+</html>

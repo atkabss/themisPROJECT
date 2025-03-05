@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+
+        .galery-container {
+            position: relative;
+            width: 130vh;
+            height: 70vh;
+            border: 2px solid rgb(0, 0, 0);
+            overflow: hidden;
+            background-color: #c9c9c9;
+            display: flex;
+            justify-content: center;
+        }
+
+        .return {
+            display: flex;
+            flex-direction: row;
+            position: absolute;
+            font-size: 20px;
+            top: 0;
+            left: 0;
+        }
+
+        .return p {
+            margin-top: 0;
+        }
+
+        .return img {
+            width: 30px;
+            height: 30px;
+        }
+
+        .NumberOfCollectedCard {
+            position: absolute;
+            margin-top: 0;
+            right: 0;
+        }
+
+        .NumberOfCollectedCard p {
+            margin-top: 0;
+            margin-bottom: 0;
+
+        }
+
+        .cadre-descriptif {
+            position: absolute;
+            transform: translate(0%, -50%);
+            top: 47%;
+            width: 95%;
+            height: 70%;
+            border: 2px dashed black;
+        }
+
+        .cadre-descriptif {
+            display: flex;
+            width: 100%;
+            height: 300px;
+            border: 1px solid #ccc;
+        }
+
+        .card-list,
+        .card-description {
+            width: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+            box-sizing: border-box;
+            background-color: #5e5a5a;
+
+        }
+
+        .card-description {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 10px;
+        }
+
+
+        #card-name {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-align: center;
+            border-bottom: 2px solid black;
+            width: 80%;
+            /* Ajustez la longueur du trait ici */
+            margin: 0 auto 10px;
+            /* Centrage horizontal */
+        }
+
+        #description {
+            font-size: 16px;
+            font-weight: normal;
+            text-align: center;
+        }
+
+
+
+        .card-list {
+            overflow-y: auto;
+            max-height: 100%;
+            scrollbar-width: none;
+            /* Firefox */
+        }
+
+        .card-list::-webkit-scrollbar {
+            display: none;
+            /* Chrome, Safari, Edge */
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 100px);
+            grid-auto-rows: 100px;
+            gap: 10px;
+            height: 90%;
+        }
+
+        .card-grid img {
+            width: 90%;
+            height: 100%;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-grid button {
+            background-color: #5e5a5a;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="galery-container">
+        <a href="{{last_page}}">
+            <div class="return">
+                <img src="/galery/ressources/return.png" alt="">
+                <p>Return</p>
+            </div>
+        </a>
+        <div class="NumberOfCollectedCard">
+            <p>collected {{carte_collecte}}/20</p>
+        </div>
+
+        <div class="cadre-descriptif">
+
+            <div class="card-list">
+                <div class="card-grid">
+                    {{bouton | safe}}
+                </div>
+            </div>
+            <div class="card-description">
+                <p id="card-name"></p>
+
+                <p id="description"></p>
+
+
+            </div>
+
+        </div>
+
+        <a href="/req_galery"><button>Card Gallery</button></a>
+        <a href="/req_item"><button>Item Gallery</button></a>
+    </div>
+
+    <script>
+        const cardList = {{ true_card_list | safe }};
+        // Fonction pour afficher les détails d'une carte
+        function showCardDetails(cardId) {
+            const card = cardList.find(c => c.id === cardId);
+            if (card) {
+                document.getElementById('card-name').textContent = card.name;
+                document.getElementById('description').textContent = card.description;
+            }
+        }
+
+        // Ajout des événements de clic aux boutons
+        document.addEventListener("DOMContentLoaded", () => {
+            const buttons = document.querySelectorAll('.card-grid button');
+            buttons.forEach(button => {
+                button.onclick = () => {
+                    const cardId = parseInt(button.id, 10);
+                    showCardDetails(cardId);
+                };
+            });
+        });
+    </script>
+
+</body>
+
+</html>

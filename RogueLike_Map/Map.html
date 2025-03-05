@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Carte interactive</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #1d273a;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+
+    }
+
+    .game-container {
+      position: relative;
+      width: 130vh;
+      height: 70vh;
+      border: 2px solid rgb(0, 0, 0);
+      overflow: hidden;
+      background-color: #c9c9c9;
+      display: flex;
+      justify-content: center;
+    }
+
+    .header-info {
+      position: absolute;
+      width: 100%;
+      height: 10%;
+      background-color: #c9c9c9;
+    }
+
+    .menu-container {
+      position: relative;
+      width: 30px;
+      height: 30px;
+      background-color: #c9c9c9;
+    }
+
+    .menu-container img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 30px;
+      height: auto;
+      object-fit: cover;
+      transition: opacity 0.5s ease;
+    }
+
+    .menu-hover {
+      opacity: 0;
+    }
+
+    .menu-container:hover .menu-hover {
+      opacity: 1;
+    }
+
+    .menu-container:hover .menu-default {
+      opacity: 0;
+    }
+
+    #bar-EXP hr {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border: 5px solid #333836;
+      width: 20vh;
+      margin: 0;
+    }
+
+    .EXP-Cadre {
+      position: absolute;
+      width: 4vh;
+      /* Largeur du losange */
+      height: 4vh;
+      /* Hauteur du losange */
+      top: 20%;
+      left: 48%;
+      transform: translate(-50%, -50%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transform: rotate(45deg);
+      /* Tourne le conteneur pour créer un losange */
+      background-color: #333836;
+      /* Couleur du losange */
+
+    }
+
+    #EXP {
+      transform: rotate(-45deg);
+      /* Compense la rotation pour le texte */
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    .player-info {
+      position: absolute;
+      background-color: #c9c9c9;
+      transform: translate(-50% -50%);
+      top: 0%;
+      right: 0%;
+      width: 35%;
+      height: 100%;
+    }
+
+    #txtEXP {
+      background-color: #333836;
+      width: 6.6vh;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: white;
+    }
+
+    #txtEXP-bar {
+      position: absolute;
+      bottom: 0%;
+      background-color: #333836;
+      width: 100%;
+      height: 20%;
+
+
+    }
+
+    #pv img {
+      position: absolute;
+      height: 2vh;
+      top: 3vh;
+      left: 8vh;
+    }
+
+    #pv-points {
+      position: absolute;
+      font-size: 2.5vh;
+      top: 2.5vh;
+      left: 18vh;
+    }
+
+    #energie {
+      position: absolute;
+      display: flex;
+      flex-direction: row;
+      width: 10vh;
+      /* Largeur du conteneur */
+      height: 4vh;
+      /* Hauteur du conteneur */
+      top: 0%;
+      left: 12vh;
+      justify-content: space-between;
+      /* Aligne les éléments avec de l'espace entre */
+      align-items: center;
+      /* Aligne verticalement au centre */
+      background-color: #c9c9c9;
+    }
+
+    #energie1 {
+      background-color: red;
+      width: 2vh;
+      /* Largeur de chaque barre */
+      height: 100%;
+      /* Hauteur de chaque barre */
+    }
+
+    #energie2 {
+      background-color: red;
+      width: 2vh;
+      height: 100%;
+    }
+
+    #energie3 {
+      background-color: red;
+      width: 2vh;
+      height: 100%;
+    }
+
+    .game-map {
+      background-color: rgba(255, 0, 0, 0);
+      position: absolute;
+      width: 100vh;
+      height: 39vh;
+      top: 40%;
+    }
+
+    #connexion1 {
+      position: relative;
+      top: 50%;
+      border: 2px solid #333836;
+    }
+
+    #connexion2 {
+      visibility: hidden;
+      position: relative;
+      border: 2px solid #333836;
+      width: 20vh;
+      height: 18vh;
+      left: 50.5%;
+      top: 25%;
+    }
+
+    .mission {
+      position: absolute;
+      background-color: #333836;
+      border-radius: 9px;
+      width: 15vh;
+      height: 8vh;
+    }
+
+    .mission:hover {
+      border: 2px solid pink;
+    }
+
+    #mission1 {
+      visibility: visible;
+      top: 16vh;
+    }
+
+    #mission2 {
+      visibility: hidden;
+      top: 16vh;
+      left: 25vh;
+    }
+
+    #mission3 {
+      visibility: hidden;
+      top: 16vh;
+      left: 53vh;
+    }
+
+    #mission4 {
+      visibility: hidden;
+      top: 7vh;
+      left: 53vh;
+
+
+    }
+
+    #mission5 {
+      visibility: hidden;
+      top: 25vh;
+      left: 53vh;
+
+    }
+
+    #mission6 {
+      visibility: hidden;
+      top: 16vh;
+      right: 0;
+    }
+
+    #CardIcone {
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      background-color: rgba(255, 0, 0, 0);
+      bottom: 0;
+      left: 0;
+    }
+
+
+    #popup {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      display: none;
+      /* Masque la pop-up au chargement */
+    }
+
+    .popup-content {
+      position: relative;
+      background-color: rgba(118, 117, 117, 0.669);
+      padding: 20px;
+      border-radius: 8px;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      width: 400px;
+      /* Largeur augmentée */
+      height: 300px;
+      /* Hauteur augmentée */
+
+    }
+
+    #closePopup {
+      position: absolute;
+      bottom: 0%;
+    }
+
+    .injection-info {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      /* Espacement entre les éléments */
+      margin: 20px 0;
+    }
+
+    /* Style des div contenant les PV */
+    .PV {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #333836;
+      height: 15vh;
+
+    }
+
+    /* Images dans les PV et flèche */
+    .PV img,
+    #fleche img {
+      width: 100%;
+      height: auto;
+    }
+
+    /* Section "Yes" et "No" */
+    .selection {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 20px;
+    }
+
+    /* Images Yes et No */
+    .selection div img {
+      width: 60px;
+      /* Taille ajustable */
+      height: auto;
+      cursor: pointer;
+      /* Ajout d'un pointeur pour interactivité */
+    }
+
+    .info-PNG {
+      background-color: rgba(0, 0, 255, 0);
+      position: absolute;
+      width: 30rem;
+      height: 10rem;
+      top: 3rem;
+      left: 0;
+      overflow: hidden;
+
+    }
+
+    .PNG {
+      background-color: #1d273a00;
+      position: absolute;
+      width: 9rem;
+      height: 100%;
+
+    }
+
+    .PNG img {
+      width: 100%;
+
+    }
+
+    .dialogue {
+      border: 2px white;
+      border-radius: 10px;
+      display: flex;
+      background-color: #1e632693;
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 50%;
+
+    }
+  </style>
+</head>
+
+<body>
+  <div class="game-container ">
+    <div class="header-info">
+      <div class="menu-container">
+        <a href="/req_menu">
+          <img src="RogueLike_Map/ressources/icone_menu2.png" alt="Image 1" class="menu">
+          <img src="RogueLike_Map/ressources/icone_menu1.png" alt="Image 2" class="menu-hover">
+        </a>
+      </div>
+      <div id="bar-EXP">
+        <hr>
+      </div>
+      <div class="EXP-Cadre">
+        <div id="EXP">-20</div>
+      </div>
+      <div class="player-info">
+        <div id="txtEXP">EXP</div>
+        <div id="txtEXP-bar"></div>
+        <!-- 
+          <div id="energie1"></div>
+          <div id="energie2"></div>
+          <div id="energie3"></div> 
+        -->
+        <div id="pv">
+          <img src="RogueLike_Map/ressources/PV.png">
+        </div>
+        <div id="pv-points">50/50</div>
+      </div>
+    </div>
+    <div class="info-PNG">
+      <div class="PNG">
+        <img src="Roguelike_Map/ressources/boy.png" alt="">
+      </div>
+      <div class="dialogue">
+        <p>
+
+        </p>
+
+      </div>
+
+    </div>
+    <div class="game-map">
+
+      <div id="connexion1"></div>
+      <div id="connexion2"></div>
+      
+      <a href="/req_stage_event1">
+        <div class="mission" id="mission1"></div>
+      </a>
+      <a href="/req_stage_event3">
+        <div class="mission" id="mission2"></div>
+
+      </a>
+      <a href="">
+        <div class="mission" id="mission3"></div>
+
+      </a>
+      <a href="">
+        <div class="mission" id="mission4"></div>
+
+      </a>
+      <a href="">
+        <div class="mission" id="mission5"></div>
+
+
+      </a>
+      <a href="">
+        <div class="mission" id="mission6"></div>
+
+      </a>
+    </div>
+
+    <a href="/req_backpack" id="CardIcone"><img src="RogueLike_Map/ressources/minicarteicone.png" alt=""></a>
+  </div>
+
+
+  <script>
+    let count = 6; // Nombre total de missions
+    const missionTexts = {{missionExplanation | safe }};
+
+    const missions = [
+      document.getElementById("mission1"),
+      document.getElementById("mission2"),
+      document.getElementById("mission3"),
+      document.getElementById("mission4"),
+      document.getElementById("mission5"),
+      document.getElementById("mission6")
+    ];
+
+    const dialogueElement = document.querySelector(".dialogue p");
+    const connexion2 = document.getElementById("connexion2");
+    const character = document.querySelector(".PNG img");
+
+    character.addEventListener("click", () => {
+      if (count > 0) {
+        const missionIndex = 6 - count; // Détermine la mission actuelle
+        missions[missionIndex].style.visibility = "visible"; // Rendre visible la mission
+        dialogueElement.textContent = missionTexts[missionIndex]; // Changer le texte du dialogue
+
+        // Gestion spéciale pour la mission 4
+        if (missionIndex === 3) {
+          connexion2.style.visibility = "visible";
+        }
+
+        count--; // Décrémenter le compteur
+
+        // Si le compteur atteint 0, désactiver le clic
+        if (count === 0) {
+          character.removeEventListener("click", this);
+        }
+      }
+    });
+  </script>
+
+  <!-- 
+  <div id="popup">
+
+    <div class="popup-content">
+      <p>Use the hp injection !</p>
+      <div class="injection-info">
+        <div class="PV" id="currentPV"><img src="RogueLike_Map/ressources/currentPV.png" alt="Current PV"></div>
+        <div id="fleche"><img src="RogueLike_Map/ressources/fleche.png" alt="Arrow"></div>
+        <div class="PV" id="maxPV"><img src="RogueLike_Map/ressources/maxPV.png" alt="Max PV"></div>
+      </div>
+
+      <div class="selection">
+        <div id="yes"><img src="RogueLike_Map/ressources/yes.png" alt="Yes"></div>
+        <div id="no"><img src="RogueLike_Map/ressources/no.png" alt="No"></div>
+
+
+        <button id="closePopup">close</button>
+      </div>
+    </div>
+
+    <script>
+      // Sélection des éléments
+      const energie = document.getElementById('energie');
+      const popup = document.getElementById('popup');
+      const closePopup = document.getElementById('closePopup');
+
+      // Affiche la pop-up au clic sur "energie"
+      energie.addEventListener('click', () => {
+        popup.style.display = 'flex'; // Affiche la pop-up
+      });
+
+      // Ferme la pop-up au clic sur "Fermer"
+      closePopup.addEventListener('click', () => {
+        popup.style.display = 'none'; // Cache la pop-up
+      });
+
+    </script>
+
+-->
+
+
+
+
+</body>
+
+</html>

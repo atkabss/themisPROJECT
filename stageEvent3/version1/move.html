@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <title>Moving</title>
+   <link rel="stylesheet" href="move_character.css">
+</head>
+<body>
+   <div class="position">
+      <img src="femmegauche.png" alt="perso 1" class="image1" id="image1">
+      <img src="femmedroite.png" alt="perso 2" class="image2" id="image2">
+   </div>
+   <div class="button1"> 
+      <button onclick="moveImage('image1', 'image2')"> Perso 1</button>
+   </div>
+   <div class="button2">
+      <button onclick="moveImage('image2', 'image1')"> Perso 2</button>
+   </div>
+
+   <script>
+      function moveImage(activeImageId, passiveImageId) {
+          const activeImage = document.getElementById(activeImageId);
+          const passiveImage = document.getElementById(passiveImageId);
+
+          const initialPosition = parseInt(window.getComputedStyle(activeImage).left, 10) || 0;
+          const targetPosition = passiveImage.getBoundingClientRect().left - activeImage.offsetWidth;
+
+          let position = initialPosition;
+          const speed = 5; 
+          let goingToTarget = true;
+
+          const interval = setInterval(() => {
+              if (goingToTarget) {
+                  position += speed;
+                  if (position >= targetPosition) {
+                      goingToTarget = false; 
+                  }
+              } else {
+                  position -= speed;
+                  if (position <= initialPosition) {
+                      clearInterval(interval); 
+                  }
+              }
+              activeImage.style.left = `${position}px`;
+          }, 10);
+      }
+   </script>
+</body>
+</html>

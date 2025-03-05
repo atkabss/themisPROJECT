@@ -1,0 +1,68 @@
+[
+    {
+        "Type" : "Joueur",
+        "HP" : 75,
+        "HP_Max" : 100,
+        "Level" : 2,
+        "EXP" : 50,
+        "EXP_ToNext" : 15,
+        "Item" : {
+            "Item_1": 1,
+            "Item_2": 3,
+            "Item_3": 0,
+            "Item_4": 0,
+            "Item_5": 0,
+            "Item_6": 0,
+            "Item_7": 0,
+            "Item_8": 0
+        }
+    },
+    {
+        "Type" : "Enemy",
+        "Position" : 1,
+        "ID" : 0,
+        "Level" : 2,
+        "Buff" : {
+            "Buff_1": 0,
+            "Buff_2": 0,
+            "Buff_3": 0,
+            "Buff_4": 0,
+            "Buff_5": 0,
+            "Buff_6": 0,
+            "Buff_7": 0,
+            "Buff_8": 0
+        }
+    },
+    {
+        "Type" : "Enemy",
+        "Position" : 2,
+        "ID" : 1,
+        "Level" : 2,
+        "Buff" : {
+            "Buff_1": 0,
+            "Buff_2": 0,
+            "Buff_3": 0,
+            "Buff_4": 0,
+            "Buff_5": 0,
+            "Buff_6": 0,
+            "Buff_7": 0,
+            "Buff_8": 0
+        }
+    },
+    {
+        "Type" : "Enemy",
+        "Position" : 3,
+        "ID" : 0,
+        "Level" : 2,
+        "Buff" : {
+            "Buff_1": 0,
+            "Buff_2": 0,
+            "Buff_3": 0,
+            "Buff_4": 0,
+            "Buff_5": 0,
+            "Buff_6": 0,
+            "Buff_7": 0,
+            "Buff_8": 0
+        }
+    }
+]

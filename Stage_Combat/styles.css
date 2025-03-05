@@ -1,0 +1,454 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #2c2c2c; 
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+#BackFond {
+
+    background-size: cover; /* Ensures the image covers the entire container */
+    background-position: bottom; /* Positions the image at the bottom */
+    position: absolute; /* Positions the image absolutely within its parent container */
+    bottom: 0; /* Anchors the image to the bottom */
+    left: 0; /* Aligns it to the left */
+    width: 100%; /* Makes the image stretch across the entire width */
+    height: 100%; /* Makes the image fill the entire height of the container */
+    opacity: 0.7; /* Sets the opacity to 90% transparent (1 - 0.1 = 90%) */
+    z-index: -1; /* Ensures the image is at the background layer */
+}
+
+
+.container {
+    position: absolute;
+    width: 90%;
+    max-width: 1200px;
+/*    border: 2px solid #ffffff;*/
+    padding: 20px;
+/*    background-color: #333333;*/
+    z-index: 1;
+}
+
+#Tour-Start {
+    position: absolute;
+    width: 90%;
+    max-width: 1200px;
+    padding: 20px;
+    opacity: 0;
+    z-index: 0;
+}
+
+/* 顶部菜单 */
+.menu-icon {
+    position: relative;
+    top: 10px;
+    left: 10px;
+    width: 30px;
+    height: 30px;
+}
+
+
+/* 回合数显示 */
+.round-number {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 300px; /* 限制宽度为 300px，或根据需要调整 */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent; /* 确保背景透明 */
+}
+
+/* 白手背景图 */
+.round-indicator {
+    position: relative;
+    width: 100%; /* 使用父容器的宽度 */
+    height: auto; /* 自动调整高度 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.round-bg {
+    width: 100%; /* 限制白手图标宽度 */
+    height: auto; /* 保持比例 */
+}
+
+.round-labels {
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    position: absolute;
+}
+
+
+/* 我方回合标识 */
+.round-turn {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+}
+
+.round-turn-img {
+    position: absolute;
+    width: 100%;
+    height: auto;
+    z-index: 1; 
+}
+
+
+.round-enemy-turn img {
+    width: 100%; /* 占满父容器 */
+    height: auto; /* 保持比例 */
+    border-radius: 50%; /* 确保图片为圆形 */
+}
+
+
+/* 回合数数字 */
+.round-counter {
+    font-size: 24px;
+    color: white;
+    z-index: 2; 
+}
+
+
+/* 背景区域 */
+.background {
+    display: flex;
+    justify-content: space-between;
+    padding: 50px 20px;
+/*    border: 2px dashed #555;*/
+    margin-top: 50px;
+}
+
+
+/* 玩家角色 */
+.player-section {
+    display: flex;
+    flex-direction: column; /* 垂直排列 */
+    align-items: center; /* 水平居中 */
+    margin-right: auto; /* 靠左对齐 */
+    margin-top: 150px;
+}
+
+.player-character {
+    width: 170px;
+    height: 240px;
+/*    background-color: #555; /*添加背景占位符 */
+    margin-bottom: 10px; /* 与血条之间的间距 */
+}
+
+.health-bar-container {
+    position: relative; /* 相对定位 */
+    width: 80%; /* 根据需要调整宽度 */
+    background-color: #ccc; /* 背景色 */
+    border-radius: 25px;
+    padding: 5px;
+    box-sizing: border-box;
+    margin: 0 auto; /* 居中 */
+}
+
+
+
+.health-text {
+    position: absolute;
+    top: 50%; /* 垂直居中 */
+    left: 50%; /* 水平居中 */
+    transform: translate(-50%, -50%); /* 修正偏移 */
+    font-size: 14px;
+    font-weight: bold;
+    color: white;
+    pointer-events: none;
+}
+
+
+/* 敌人区域 */
+#enemy-1 {
+    margin-top: 150px;
+}
+
+#enemy-2 {
+    margin-top: 120px;
+}
+
+#enemy-3 {
+    margin-top: 160px;
+}
+
+.enemy-section {
+    display: flex;
+    gap: 30px;
+}
+
+.enemy-icon {
+    width: 120px;
+    height: auto;
+/*    background-color: #555; /* 在这里添加敌人图片 */
+    margin-top: 20px;
+}
+
+
+/* 敌人角色 */
+.enemy {
+    display: flex;
+    flex-direction: column; /* 垂直排列 */
+    align-items: center;
+/*    background-color: #444;*/
+    padding: 10px;
+    width: 170px;
+    position: relative;
+}
+
+.enemy-icon {
+    width: 120px;
+    height: auto;
+    margin-bottom: 10px; /* 与血条之间的间距 */
+}
+
+
+.enemy-intention {
+    height: 25px;
+    width: auto;
+    margin-bottom: 10px; /* 确保小人与意图之间有足够空间 */
+    font-size: 12px;
+    text-align: center; /* 居中文字 */
+}
+
+
+/* 血条 */
+.bar {
+    background-color: #444444; /* 灰色背景，作为血条底框 */
+    width: 100px; /* 血条总宽度 */
+    height: 20px; /* 血条高度 */
+    border-radius: 5px; /* 圆角效果 */
+    overflow: hidden; /* 确保子元素不会超出容器 */
+    position: relative; /* 相对定位 */
+    border: 2px solid #555555; /* 明确底框颜色 */
+}
+
+.hp {
+    background-color: #f02e2e; /* 红色，表示血量 */
+    color: white; /* 字体颜色 */
+    text-align: center; /* 文字居中 */
+    height: 100%; /* 高度与父容器一致 */
+    line-height: 20px; /* 垂直居中 */
+    border-radius: 3px; /* 血条内部圆角 */
+    white-space: nowrap; /* 防止文字换行 */
+    overflow: hidden; /* 避免超出显示 */
+    transition: width 0.3s ease; /* 平滑动画 */
+}
+
+.shield-icon {
+    width: 100px; /* 血条总宽度 */
+    height: 20px; /* 血条高度 */
+    border-radius: 5px; /* 圆角效果 */
+    overflow: hidden; /* 确保子元素不会超出容器 */
+    position: relative; /* 相对定位 */
+}
+
+#player-shield-img {
+    position: absolute;
+    width: 100px;
+    height: 15px;
+}
+
+#player-shield-number {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* 水平垂直居中 */
+    font-size: 16px; /* 调整字体大小 */
+    font-weight: bold; /* 加粗字体 */
+    color: black; /* 文字颜色为黑色 */
+    text-align: center; /* 居中对齐 */
+    z-index: 3;
+}
+
+
+
+/* 能量条 */
+.cost {
+    position: absolute; /* 设置为绝对定位 */
+    bottom: 50px; /* 离底部 20px */
+    left: 50px; /* 离左侧 20px */
+    display: flex;
+    align-items: center;
+}
+
+.cost-icon {
+    width: 80px;
+    height: 80px;
+}
+
+.cost-bar {
+    margin-left: 10px;
+    font-size: 16px;
+}
+
+/* 卡牌背包 */
+.Desk_Cartes {
+    position: absolute; /* 设置为绝对定位 */
+    bottom: 15px; /* 离底部 20px */
+    left: 15px; /* 离左侧 20px */
+    display: flex;
+    align-items: center;
+}
+
+.Desk-icon {
+    width: 30px;
+    height: 30px;
+    position: relative; /* 确保子元素的绝对定位基于父元素 */
+    overflow: hidden; /* 限制悬停图片的范围 */
+}
+
+/* 卡牌区域 */
+.cards {
+    display: flex;
+    height: 150px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* 卡牌样式 */
+.card {
+    width: 100px;
+    height: 150px;
+    background-color: #666; /* 在这里添加卡牌图片 */
+    cursor: pointer;
+}
+
+.Cartes {
+        width: 100px;
+        height: 150px;
+        background-color: #666; /* 在这里添加卡牌图片 */
+        cursor: pointer;
+}
+
+/* 结束回合按钮 */
+.end-turn {
+    position: relative;
+    width: 200px; /* 设置图片宽度 */
+    height: 60px; /* 设置图片高度 */
+}
+
+
+/* 默认情况下显示第一张图片 */
+.default-img {
+    width: 100%;
+    height: 100%;
+    opacity: 1; /* 显示图1 */
+    visibility: visible; /* 确保图1可见 */
+    transition: opacity 0.3s ease; /* 动画过渡效果 */
+}
+
+/* 第二张图片（悬停时显示） */
+.hover-img {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 1; /* 默认层级 */
+    top: 0;
+    left: 0;
+    opacity: 0; /* 初始时隐藏图2 */
+    visibility: hidden; /* 确保图2不可见 */
+    transition: opacity 0.3s ease; /* 动画过渡效果 */
+}
+
+
+/* 鼠标悬停时切换图片 */
+.Desk-icon:hover .default-img,
+.end-turn:hover .default-img,
+.menu-icon:hover .default-img {
+    opacity: 0; /* 隐藏图1 */
+    visibility: hidden; /* 图1完全隐藏 */
+}
+
+.Desk-icon:hover .hover-img,
+.end-turn:hover .hover-img,
+.menu-icon:hover .hover-img {
+    opacity: 1; /* 显示图2 */
+    visibility: visible; /* 图2可见 */
+}
+
+
+/* 新容器用于排列卡牌、能量条和结束回合按钮 */
+.container-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* 垂直居中对齐 */
+    margin-top: 20px;
+    width: 100%;
+}
+
+
+/* 定义叠加文字的样式 */
+.Dead-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: rgb(254, 0, 0);
+    font-size: 20px;
+    font-weight: bold;
+    pointer-events: none; /* 禁止鼠标事件 */
+    z-index: 10; /* 确保叠加在其他内容之上 */
+}
+
+#Affiche-Zone {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    margin: 20px auto;
+    border-radius: 10px;
+}
+
+#card-info-panel {
+    background-color: gray;
+    max-width: 300px;
+    max-width: 300px;
+}
+
+.used-card-image {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 80%;
+    max-height: 80%;
+    border: 2px solid #333;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    opacity: 0.7; 
+    z-index: 10;
+}
+
+
+
+
+.controls {
+    margin-top: 20px;
+}
+
+.lose-message {
+    animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}

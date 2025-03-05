@@ -1,0 +1,65 @@
+[
+    {
+        "id": 0,
+        "name": "attaque",
+        "description": "Permet d'attaquer un joueur.",
+        "source": "backpack/ressources/moi.jpg",
+        "bloquer": "true"
+    },
+    {
+        "id": 1,
+        "name": "défense",
+        "description": "Protège contre une attaque.",
+        "source": "backpack/ressources/toi.jpg",
+        "bloquer": "false"
+    },
+    {
+        "id": 2,
+        "name": "vol",
+        "description": "Permet de voler une carte à un joueur.",
+        "source": "backpack/ressources/loi.jpg",
+        "bloquer": "false"
+    },
+    {
+        "id": 3,
+        "name": "soutien",
+        "description": "Offre un avantage à un autre joueur.",
+        "source": "backpack/ressources/soi.jpg",
+        "bloquer": "false"
+    },
+    {
+        "id": 4,
+        "name": "piège",
+        "description": "Pose un piège pour les autres joueurs.",
+        "source": "backpack/ressources/qoi.jpg",
+        "bloquer": "false"
+    },
+    {
+        "id": 5,
+        "name": "bonus",
+        "description": "Ajoute un bonus temporaire.",
+        "source": "backpack/ressources/poi.jpg",
+        "bloquer": "false"
+    },
+    {
+        "id": 6,
+        "name": "contre",
+        "description": "Annule l'effet d'une carte adverse.",
+        "source": "backpack/ressources/joi.jpg",
+        "bloquer": "false"
+    },
+    {
+        "id": 7,
+        "name": "échange",
+        "description": "Échange une carte avec un autre joueur.",
+        "source": "backpack/ressources/voi.jpg",
+        "bloquer": "false"
+    },
+    {
+        "id": 8,
+        "name": "réparation",
+        "description": "Répare un objet ou annule un effet négatif.",
+        "source": "backpack/ressources/roi.jpg",
+        "bloquer": "false"
+    }
+]

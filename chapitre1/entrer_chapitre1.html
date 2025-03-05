@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>enterGame</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1d273a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+
+        }
+
+        .chapitre {
+            
+            position: relative;
+            display: flex;
+            align-items: center;
+            width: 130vh;
+            height: 70vh;
+            border: 2px solid rgb(0, 0, 0);
+            overflow: hidden;
+            background-color: #ebebeb;
+            justify-content: center;
+        }
+
+        .menu-container {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            top: 0;
+            left: 0;
+            cursor: pointer;
+        }
+
+        .menu-container img {
+            position: absolute;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            top: 0;
+            left: 0;
+            width: 30px;
+            height: auto;
+            object-fit: cover;
+            transition: transform 0.3s ease, opacity 0.5s ease;
+        }
+
+        .menu-hover {
+            opacity: 0;
+        }
+
+        .menu-container:hover .menu-hover {
+            opacity: 1;
+            transform: scale(1.2);
+        }
+
+        .menu-container:hover .menu-default {
+            opacity: 0;
+            transform: scale(0.8);
+        }
+
+        .selection {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 50px;
+            background-image: url('chapitre1/ressources/4Lax.gif');
+            background-size: 100% 100%;
+            border: 2px solid black;
+            width: 18%;
+            height: 60%;
+        }
+
+
+        .selection img {
+            position: relative;
+            right: 10%;
+            width: 130%;
+            height: 8vh;
+            transition: transform 0.3s ease;
+            /* Ajout de la transition pour le zoom */
+        }
+
+        /* Effet de zoom au survol */
+        .selection img:hover {
+            transform: scale(1.1);
+            /* Zoom avant de 10% */
+        }
+
+        a {
+            display: inline-block;
+            /* Transforme le lien en bloc */
+            width: 100%;
+            /* Occupe toute la largeur de son conteneur */
+            height: 20%;
+            /* Occupe toute la hauteur de son conteneur */
+        }
+
+
+    </style>
+</head>
+
+<body>
+
+    <div class="chapitre">
+        <div class="menu-container unlock">
+            <a href="/req_menu">
+                <img src="chapitre1/ressources/icone_menu2.png" alt="Image 1" class="menu menu-default">
+                <img src="chapitre1/ressources/icone_menu1.png" alt="Image 2" class="menu-hover">
+            </a>
+           
+
+        </div>
+        <div class="selection">
+            <a href="/req_choix_person_chap1">
+                <div><img src="chapitre1/ressources/startf.png" alt=""></div>
+            </a>
+            <!-- <a href="/req_roguelike_map">
+                <div> <img src="chapterSelection/chapitre1/ressources/continuef.png" alt=""></div>
+            </a> -->
+        </div>
+    </div>
+
+</body>
+
+</html>

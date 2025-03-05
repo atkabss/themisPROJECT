@@ -1,0 +1,16 @@
+[
+    {
+        "Nom" : "A",
+        "HP" : "50 + Level * 15",
+        "Level" : 1,
+        "Cost" : 5,
+        "Energie" : 0
+    },
+    {
+        "Nom" : "B",
+        "HP" : "30 + Level * 14",
+        "Level" : 1,
+        "Cost" : 5,
+        "Energie" : 0
+    }
+]

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>info_personnage_cards</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1d273a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+
+        }
+
+        .page-container {
+            position: relative;
+            width: 130vh;
+            height: 70vh;
+            border: 2px solid rgb(0, 0, 0);
+            overflow: hidden;
+            background-color: #c9c9c9;
+
+        }
+
+        .menu-container {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            top: 0;
+            left: 0;
+        }
+
+        .menu-container img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 30px;
+            height: auto;
+            object-fit: cover;
+            transition: opacity 0.5s ease;
+        }
+
+        .menu-hover {
+            opacity: 0;
+        }
+
+        .menu-container:hover .menu-hover {
+            opacity: 1;
+        }
+
+        .menu-container:hover .menu-default {
+            opacity: 0;
+        }
+
+        .deco {
+            position: absolute;
+            left: 48%;
+            width: 100px;
+            height: 100px;
+            transform: translate(-50%, 0%);
+        }
+
+        .deco img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .garcon {
+            position: absolute;
+            background-color: #4d5584;
+            width: 50%;
+            height: 100%;
+
+        }
+
+        .garcon img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .fille {
+            position: absolute;
+            background-color: #926050;
+            width: 50%;
+            height: 100%;
+            right: 0;
+        }
+
+        .fille p {
+            position: absolute;
+            display: flex;
+            /* Active Flexbox pour le centrage */
+            align-items: center;
+            /* Centre le contenu verticalement */
+            justify-content: center;
+            /* Centre le contenu horizontalement */
+            text-align: center;
+            /* Centre le texte à l'intérieur */
+            background-color: rgba(128, 128, 128, 0.521);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            /* Centre parfaitement dans le parent */
+            width: 100%;
+            /* Taille ajustable */
+            height: 100%;
+            /* Taille ajustable */
+            margin-top: 0px;
+        }
+
+        .fille img {
+            background-color: #926050;
+            width: 100%;
+            height: 100%;
+        }
+
+        a {
+            width: 100%;
+            height: 100%;
+        }
+
+        .bar {
+            position: absolute;
+            background-color: white;
+            left: 49.5%;
+            width: 1%;
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page-container">
+
+
+        <div class="garcon">
+            <a href="/req_character_cards_info?perso=boy"><img src="characterSelection/ressources/boy.png" alt=""></a>
+        </div>
+        <div class="fille">
+            <img src="characterSelection/ressources/girl.png" alt="">
+            <p>PNG Lock</p>
+
+
+        </div>
+        <div class="menu-container">
+            <img src="characterSelection/ressources/icone_menu2.png" alt="Image 1" class="menu">
+            <img src="characterSelection/ressources/icone_menu1.png" alt="Image 2" class="menu-hover">
+        </div>
+        <div class="deco">
+            <img src="characterSelection/ressources/WhiteHands.png" alt="">
+        </div>
+        <div class="bar"></div>
+    </div>
+</body>
+
+</html>

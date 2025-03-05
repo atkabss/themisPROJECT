@@ -1,0 +1,101 @@
+[
+    {
+        "id": 1,
+        "name": "attaque",
+        "description": "Permet d'attaquer un joueur.",
+        "level2": "pieges",
+        "level3": "bonus",
+        "source": "galery/ressources/2001.jpg",
+        "bloquer": "false",
+        "II": "true",
+        "III": "true"
+    },
+    {
+        "id": 2,
+        "name": "défense",
+        "description": "Protège contre une attaque.",
+        "level2": "pieges defense",
+        "level3": "bonus extracion",
+        "source": "galery/ressources/2002.jpg",
+        "bloquer": "false",
+        "II": "true",
+        "III": "true"
+    },
+    {
+        "id": 3,
+        "name": "vol",
+        "description": "Permet de voler une carte à un joueur.",
+        "level2": "pieges tutilisaore",
+        "level3": "bonus blood",
+        "source": "galery/ressources/2003.jpg",
+        "bloquer": "false",
+        "II": "true",
+        "III": "true"
+    },
+    {
+        "id": 4,
+        "name": "soutien",
+        "description": "Offre un avantage à un autre joueur.",
+        "level2": "pieges terroor",
+        "level3": "bonus mafia groupe",
+        "source": "galery/ressources/2004.jpg",
+        "bloquer": "false",
+        "II": "true",
+        "III": "true"
+    },
+    {
+        "id": 5,
+        "name": "piège",
+        "description": "Pose un piège pour les autres joueurs.",
+        "level2": "pieges lfonse",
+        "level3": "bonus bouillire ",
+        "source": "galery/ressources/2005.jpg",
+        "bloquer": "false",
+        "II": "true",
+        "III": "true"
+    },
+    {
+        "id": 6,
+        "name": "bonus",
+        "description": "Ajoute un bonus temporaire.",
+        "level2": "pieges ultrason",
+        "level3": "bonus destruction",
+        "source": "galery/ressources/2006.jpg",
+        "bloquer": "false",
+        "II": "true",
+        "III": "false"
+    },
+    {
+        "id": 7,
+        "name": "contre",
+        "description": "Annule l'effet d'une carte adverse.",
+        "level2": "pieges contre",
+        "level3": "bonus contre",
+        "source": "galery/ressources/2007.jpg",
+        "bloquer": "false",
+        "II": "true",
+        "III": "false"
+    },
+    {
+        "id": 8,
+        "name": "échange",
+        "description": "Échange une carte avec un autre joueur.",
+        "level2": "pieges diffrence",
+        "level3": "bonus recompense",
+        "source": "galery/ressources/2008.jpg",
+        "bloquer": "false",
+        "II": "true",
+        "III": "true"
+    },
+    {
+        "id": 9,
+        "name": "réparation",
+        "description": "Répare un objet ou annule un effet négatif.",
+        "level2": "pieges reparation",
+        "level3": "bonus mort ",
+        "source": "galery/ressources/2009.jpg",
+        "bloquer": "false",
+        "II": "true",
+        "III": "false"
+    }
+]

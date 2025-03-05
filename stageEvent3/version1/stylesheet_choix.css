@@ -1,0 +1,72 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column; 
+    justify-content: space-between; 
+    align-items: center; 
+    height: 100vh;
+  }
+  
+  .dialogue {
+  background-color: white;
+  height: 30%;
+  width: 80%;
+  
+  }
+  
+  button {
+    padding: 10px 20px;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    height: 10vh;
+  }
+  
+  .text {
+    display: none;
+    margin-top: 10px;
+    color: #333;
+    font-size: 16px;
+    position: absolute;
+    bottom: 110%; 
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+  }
+  
+  a {
+    position: relative; 
+  }
+  
+  a:hover .text {
+    display: block; 
+  }
+  
+  .button-container {
+    display: flex;
+    gap: 20px; 
+    margin-bottom: 20px;
+  }
+  
+  .menu {
+    width: 50px;
+    height: 50px;
+    position: fixed;
+    top: 10px;
+    left: 10px;
+  }
+  
+  h1 {
+    text-align: center;
+  }
+  
+  h2 {
+    color: blueviolet;
+    border: 10px solid beige;
+    padding: 10px;
+    background-color: beige;
+    border-radius: 10px;
+  }

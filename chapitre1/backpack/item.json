@@ -1,0 +1,65 @@
+[
+    {
+        "id": 1,
+        "name": "attaque",
+        "description": "Permet d'attaquer un joueur.",
+        "source": "galery/ressources/item0.jpg",
+        "bloquer": "true"
+    },
+    {
+        "id": 2,
+        "name": "défense",
+        "description": "Protège contre une attaque.",
+        "source": "galery/ressources/item1.jpg",
+        "bloquer": "false"
+    },
+    {
+        "id": 3,
+        "name": "vol",
+        "description": "Permet de voler une carte à un joueur.",
+        "source": "galery/ressources/item2.jpg",
+        "bloquer": "false"
+    },
+    {
+        "id": 4,
+        "name": "soutien",
+        "description": "Offre un avantage à un autre joueur.",
+        "source": "galery/ressources/item3.jpg",
+        "bloquer": "false"
+    },
+    {
+        "id": 5,
+        "name": "piège",
+        "description": "Pose un piège pour les autres joueurs.",
+        "source": "galery/ressources/item4.jpg",
+        "bloquer": "false"
+    },
+    {
+        "id": 6,
+        "name": "bonus",
+        "description": "Ajoute un bonus temporaire.",
+        "source": "galery/ressources/item5.jpg",
+        "bloquer": "false"
+    },
+    {
+        "id": 7,
+        "name": "contre",
+        "description": "Annule l'effet d'une carte adverse.",
+        "source": "galery/ressources/item6.jpg",
+        "bloquer": "false"
+    },
+    {
+        "id": 8,
+        "name": "échange",
+        "description": "Échange une carte avec un autre joueur.",
+        "source": "galery/ressources/item7.jpg",
+        "bloquer": "false"
+    },
+    {
+        "id": 9,
+        "name": "réparation",
+        "description": "Répare un objet ou annule un effet négatif.",
+        "source": "galery/ressources/item8.jpg",
+        "bloquer": "false"
+    }
+]

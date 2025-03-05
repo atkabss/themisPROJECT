@@ -1,0 +1,39 @@
+body {
+    background-color: darkgrey;
+    margin:0px;
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    height: 100vh; 
+    width: 100%;
+  }
+
+  .liste-vert {
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .h1 {
+    text-align: center;
+   
+    
+  }
+
+  .white {
+    background-color: white;
+  width: 100%; 
+  padding: 10px; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  }
+  .margin{
+    margin: 10px;
+  }
+  .button{
+    height:20px
+  }
